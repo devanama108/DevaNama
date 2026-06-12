@@ -781,40 +781,31 @@ function escapeHTML(str) {
 
 function updateUserProfileUI() {
     const profileSection = document.getElementById('user-profile-section');
-    if (!profileSection) return;
+    const landingPage = document.getElementById('landing-page');
+    const appContainer = document.querySelector('.app-container');
 
     if (state.profile && state.profile.loggedIn) {
-        const lvlInfo = getSadhakaLevelInfo(state.totalCount);
-        const avatarEmoji = state.profile.avatar ? state.profile.avatar.split(' ')[0] : '\uD83C\uDF38';
-        profileSection.innerHTML = `
-            <div class="profile-info-container">
-                <div class="profile-avatar-circle">${avatarEmoji}</div>
-                <div class="profile-sadhaka-name">${escapeHTML(state.profile.name)}</div>
-                <div class="profile-sadhaka-level">Level ${lvlInfo.level}: ${lvlInfo.title}</div>
-                <button class="btn-profile-logout" id="btn-logout-trigger">\uD83D\uDEAA Logout</button>
-            </div>
-        `;
-        document.getElementById('btn-logout-trigger').addEventListener('click', handleLogout);
+        if (landingPage) landingPage.style.display = 'none';
+        if (appContainer) appContainer.style.display = 'grid';
+
+        if (profileSection) {
+            const lvlInfo = getSadhakaLevelInfo(state.totalCount);
+            const avatarEmoji = state.profile.avatar ? state.profile.avatar.split(' ')[0] : '\uD83C\uDF38';
+            profileSection.innerHTML = `
+                <div class="profile-info-container">
+                    <div class="profile-avatar-circle">${avatarEmoji}</div>
+                    <div class="profile-sadhaka-name">${escapeHTML(state.profile.name)}</div>
+                    <div class="profile-sadhaka-level">Level ${lvlInfo.level}: ${lvlInfo.title}</div>
+                    <button class="btn-profile-logout" id="btn-logout-trigger">\uD83D\uDEAA Logout</button>
+                </div>
+            `;
+            const logoutBtn = document.getElementById('btn-logout-trigger');
+            if (logoutBtn) logoutBtn.addEventListener('click', handleLogout);
+        }
     } else {
-        profileSection.innerHTML = `
-            <button class="btn-profile-login" id="btn-login-trigger">\uD83D\uDD12 Sadhaka Login</button>
-        `;
-        document.getElementById('btn-login-trigger').addEventListener('click', openLoginModal);
+        if (landingPage) landingPage.style.display = 'flex';
+        if (appContainer) appContainer.style.display = 'none';
     }
-}
-
-function openLoginModal() {
-    const modal = document.getElementById('login-modal');
-    if (modal) {
-        modal.classList.add('active');
-        const inputField = document.getElementById('keyboard-input');
-        if (inputField) inputField.blur();
-    }
-}
-
-function closeLoginModal() {
-    const modal = document.getElementById('login-modal');
-    if (modal) modal.classList.remove('active');
 }
 
 function handleLoginSubmit(e) {
@@ -831,7 +822,6 @@ function handleLoginSubmit(e) {
     };
 
     saveProgress();
-    closeLoginModal();
     updateUserProfileUI();
     showNotification(`\uD83C\uDF38 Welcome, <strong>${escapeHTML(state.profile.name)}</strong>!<br><br>Your personalized sadhana space is now active. Keep writing to elevate your level.`);
 }
@@ -1349,10 +1339,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const loginForm = document.getElementById('login-form');
     if (loginForm) {
         loginForm.addEventListener('submit', handleLoginSubmit);
-    }
-    const loginClose = document.getElementById('btn-login-close');
-    if (loginClose) {
-        loginClose.addEventListener('click', closeLoginModal);
     }
     const googleMock = document.getElementById('btn-google-mock');
     if (googleMock) {

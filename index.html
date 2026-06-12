@@ -9,6 +9,51 @@
 </head>
 <body>
 
+    <!-- DevaNama Full-Screen Landing / Login Page -->
+    <div class="landing-container" id="landing-page" style="display: none;">
+        <div class="landing-card">
+            <div class="landing-brand">
+                <img src="devanama_logo.png" alt="DevaNama Logo" class="landing-logo" style="width: 100px; height: 100px; border-radius: 50%; border: 2px solid var(--gold); margin-bottom: 1rem; box-shadow: 0 0 15px var(--gold-glow);">
+                <h1 class="landing-title">देवनाम</h1>
+                <div class="landing-subtitle">DevaNama</div>
+                <p class="landing-desc" style="font-size: 0.9rem; color: var(--text-muted); max-width: 320px; margin: 0.75rem auto 0; line-height: 1.5;">Enter your spiritual name to personalize your sadhana book and track your chanting progress.</p>
+            </div>
+            
+            <form id="login-form" class="modal-form">
+                <div class="form-group">
+                    <label for="login-name">Your Spiritual Name</label>
+                    <input type="text" id="login-name" placeholder="e.g. Ramdas" required>
+                </div>
+                <div class="form-group">
+                    <label for="login-email">Email Address</label>
+                    <input type="email" id="login-email" placeholder="e.g. sadhaka@devanama.online" required>
+                </div>
+                <div class="form-group">
+                    <label for="login-avatar">Select Avatar Icon</label>
+                    <select id="login-avatar">
+                        <option value="🌸 Lotus">🌸 Sacred Lotus</option>
+                        <option value="🪔 Diya">🪔 Glowing Diya</option>
+                        <option value="ॐ Om">ॐ Om Symbol</option>
+                        <option value="📿 Mala">📿 Chanting Mala</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn-primary" style="margin-top: 1.5rem; width: 100%;">Enter Sadhana Space</button>
+            </form>
+            
+            <div class="modal-divider"><span>OR</span></div>
+            
+            <button class="btn-google-login" id="btn-google-mock">
+                <svg class="google-icon-svg" viewBox="0 0 24 24" style="width: 18px; height: 18px; margin-right: 8px;">
+                    <path fill="#EA4335" d="M12 5.04c1.62 0 3.08.56 4.22 1.65l3.15-3.15C17.45 1.76 14.94 1 12 1 7.24 1 3.2 3.75 1.25 7.77l3.82 2.96C6.01 7.74 8.79 5.04 12 5.04z"/>
+                    <path fill="#4285F4" d="M23.49 12.27c0-.81-.07-1.59-.2-2.36H12v4.51h6.44c-.28 1.48-1.12 2.73-2.38 3.58l3.7 2.87c2.16-1.99 3.43-4.92 3.43-8.6z"/>
+                    <path fill="#FBBC05" d="M5.07 10.73c-.24-.73-.38-1.5-.38-2.31s.14-1.58.38-2.31L1.25 5.15C.45 6.78 0 8.59 0 10.5s.45 3.72 1.25 5.35l3.82-2.96-.2-1.16z"/>
+                    <path fill="#34A853" d="M12 23c3.24 0 5.97-1.07 7.96-2.91l-3.7-2.87c-1.03.69-2.35 1.1-3.96 1.1-3.21 0-5.99-2.7-6.93-5.69l-3.82 2.96C3.2 20.25 7.24 23 12 23z"/>
+                </svg>
+                Continue with Google
+            </button>
+        </div>
+    </div>
+
     <div class="app-container">
         <!-- Mobile Header Bar -->
         <header class="mobile-navbar">
@@ -276,47 +321,7 @@
         </div>
     </div>
 
-    <!-- Login Modal -->
-    <div class="modal-overlay" id="login-modal">
-        <div class="modal-content login-modal-content">
-            <button class="modal-close-x" id="btn-login-close">✕</button>
-            <h2 class="modal-header-title">Sadhaka Login</h2>
-            <p class="modal-header-desc">Enter your name to personalize your sadhana book.</p>
-            
-            <form id="login-form" class="modal-form">
-                <div class="form-group">
-                    <label for="login-name">Your Spiritual Name</label>
-                    <input type="text" id="login-name" placeholder="e.g. Ramdas" required>
-                </div>
-                <div class="form-group">
-                    <label for="login-email">Email Address</label>
-                    <input type="email" id="login-email" placeholder="e.g. sadhaka@devanama.online" required>
-                </div>
-                <div class="form-group">
-                    <label for="login-avatar">Select Avatar Icon</label>
-                    <select id="login-avatar">
-                        <option value="🌸 Lotus">🌸 Sacred Lotus</option>
-                        <option value="🪔 Diya">🪔 Glowing Diya</option>
-                        <option value="ॐ Om">ॐ Om Symbol</option>
-                        <option value="📿 Mala">📿 Chanting Mala</option>
-                    </select>
-                </div>
-                <button type="submit" class="btn-primary" style="margin-top: 1rem; width: 100%;">Enter Sadhana Space</button>
-            </form>
-            
-            <div class="modal-divider"><span>OR</span></div>
-            
-            <button class="btn-google-login" id="btn-google-mock">
-                <svg class="google-icon-svg" viewBox="0 0 24 24" style="width: 18px; height: 18px; margin-right: 8px;">
-                    <path fill="#EA4335" d="M12 5.04c1.62 0 3.08.56 4.22 1.65l3.15-3.15C17.45 1.76 14.94 1 12 1 7.24 1 3.2 3.75 1.25 7.77l3.82 2.96C6.01 7.74 8.79 5.04 12 5.04z"/>
-                    <path fill="#4285F4" d="M23.49 12.27c0-.81-.07-1.59-.2-2.36H12v4.51h6.44c-.28 1.48-1.12 2.73-2.38 3.58l3.7 2.87c2.16-1.99 3.43-4.92 3.43-8.6z"/>
-                    <path fill="#FBBC05" d="M5.07 10.73c-.24-.73-.38-1.5-.38-2.31s.14-1.58.38-2.31L1.25 5.15C.45 6.78 0 8.59 0 10.5s.45 3.72 1.25 5.35l3.82-2.96-.2-1.16z"/>
-                    <path fill="#34A853" d="M12 23c3.24 0 5.97-1.07 7.96-2.91l-3.7-2.87c-1.03.69-2.35 1.1-3.96 1.1-3.21 0-5.99-2.7-6.93-5.69l-3.82 2.96C3.2 20.25 7.24 23 12 23z"/>
-                </svg>
-                Continue with Google
-            </button>
-        </div>
-    </div>
+
 
     <!-- Donation Modal -->
     <div class="modal-overlay" id="donation-modal">
