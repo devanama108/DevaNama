@@ -19,6 +19,12 @@ if (SUPABASE_URL && SUPABASE_ANON_KEY) {
     }
 }
 
+// --- Global Debugging Error Catching ---
+window.onerror = function(message, source, lineno, colno, error) {
+    alert("DevaNama Javascript Error: " + message + " (at " + source + ":" + lineno + ")");
+    return false;
+};
+
 // --- Global Dictionaries and Mappings ---
 const SCRIPT_DICTIONARY = {
     "Sri Rama": {
