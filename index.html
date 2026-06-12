@@ -14,22 +14,22 @@
         <div class="landing-card">
             <div class="landing-brand">
                 <img src="devanama_logo.png" alt="DevaNama Logo" class="landing-logo" style="width: 100px; height: 100px; border-radius: 50%; border: 2px solid var(--gold); margin-bottom: 1rem; box-shadow: 0 0 15px var(--gold-glow);">
-                <h1 class="landing-title">देवनाम</h1>
-                <div class="landing-subtitle">DevaNama</div>
-                <p class="landing-desc" style="font-size: 0.9rem; color: var(--text-muted); max-width: 320px; margin: 0.75rem auto 0; line-height: 1.5;">Enter your spiritual name to personalize your sadhana book and track your chanting progress.</p>
+                <h1 class="landing-title" data-translate="landing-title">देवनाम</h1>
+                <div class="landing-subtitle" data-translate="landing-subtitle">DevaNama</div>
+                <p class="landing-desc" data-translate="landing-desc" style="font-size: 0.9rem; color: var(--text-muted); max-width: 320px; margin: 0.75rem auto 0; line-height: 1.5;">Enter your spiritual name to personalize your sadhana book and track your chanting progress.</p>
             </div>
             
             <form id="login-form" class="modal-form">
                 <div class="form-group">
-                    <label for="login-name">Your Spiritual Name</label>
+                    <label for="login-name" data-translate="label-login-name">Your Spiritual Name</label>
                     <input type="text" id="login-name" placeholder="e.g. Ramdas" required>
                 </div>
                 <div class="form-group">
-                    <label for="login-email">Email Address</label>
+                    <label for="login-email" data-translate="label-login-email">Email Address</label>
                     <input type="email" id="login-email" placeholder="e.g. sadhaka@devanama.online" required>
                 </div>
                 <div class="form-group">
-                    <label for="login-avatar">Select Avatar Icon</label>
+                    <label for="login-avatar" data-translate="label-login-avatar">Select Avatar Icon</label>
                     <select id="login-avatar">
                         <option value="🌸 Lotus">🌸 Sacred Lotus</option>
                         <option value="🪔 Diya">🪔 Glowing Diya</option>
@@ -37,7 +37,22 @@
                         <option value="📿 Mala">📿 Chanting Mala</option>
                     </select>
                 </div>
-                <button type="submit" class="btn-primary" style="margin-top: 1.5rem; width: 100%;">Enter Sadhana Space</button>
+                <div class="form-group">
+                    <label for="login-lang" data-translate="label-login-lang">Select App Language</label>
+                    <select id="login-lang">
+                        <option value="english" selected>English</option>
+                        <option value="devanagari">Devanagari (Hindi/Sanskrit/Marathi)</option>
+                        <option value="telugu">Telugu (తెలుగు)</option>
+                        <option value="tamil">Tamil (தமிழ்)</option>
+                        <option value="kannada">Kannada (ಕನ್ನಡ)</option>
+                        <option value="bengali">Bengali (বাংলা)</option>
+                        <option value="gujarati">Gujarati (ગુજરાતી)</option>
+                        <option value="malayalam">Malayalam (മലയാളം)</option>
+                        <option value="odia">Odia (ଓଡ଼ିଆ)</option>
+                        <option value="punjabi">Punjabi (ਪੰਜਾਬੀ)</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn-primary" data-translate="btn-login-submit" style="margin-top: 1.5rem; width: 100%;">Enter Sadhana Space</button>
             </form>
             
             <div class="modal-divider"><span>OR</span></div>
@@ -49,7 +64,7 @@
                     <path fill="#FBBC05" d="M5.07 10.73c-.24-.73-.38-1.5-.38-2.31s.14-1.58.38-2.31L1.25 5.15C.45 6.78 0 8.59 0 10.5s.45 3.72 1.25 5.35l3.82-2.96-.2-1.16z"/>
                     <path fill="#34A853" d="M12 23c3.24 0 5.97-1.07 7.96-2.91l-3.7-2.87c-1.03.69-2.35 1.1-3.96 1.1-3.21 0-5.99-2.7-6.93-5.69l-3.82 2.96C3.2 20.25 7.24 23 12 23z"/>
                 </svg>
-                Continue with Google
+                <span data-translate="btn-google-login">Continue with Google</span>
             </button>
         </div>
     </div>
@@ -59,10 +74,10 @@
         <header class="mobile-navbar">
             <div class="mobile-brand">
                 <img src="devanama_logo.png" alt="DevaNama Logo" class="mobile-brand-logo" style="width: 32px; height: 32px; border-radius: 50%;">
-                <span class="mobile-brand-title">देवनाम</span>
-                <span class="mobile-brand-subtitle">DevaNama</span>
+                <span class="mobile-brand-title" data-translate="brand-name">देवनाम</span>
+                <span class="mobile-brand-subtitle" data-translate="brand-name-sub">DevaNama</span>
             </div>
-            <button class="menu-toggle-btn" id="mobile-menu-toggle" aria-label="Toggle Settings Menu">⚙️ Settings</button>
+            <button class="menu-toggle-btn" id="mobile-menu-toggle" aria-label="Toggle Settings Menu" data-translate="mobile-menu-toggle">⚙️ Settings</button>
         </header>
 
         <!-- Sidebar Navigation & Controls -->
@@ -72,21 +87,21 @@
             <div class="brand">
                 <img src="devanama_logo.png" alt="DevaNama Logo" class="brand-logo" style="width: 70px; height: 70px; border-radius: 50%; margin-bottom: 0.5rem; border: 1.5px solid var(--gold);">
                 <h1 class="brand-title" id="main-title">देवनाम</h1>
-                <div class="brand-subtitle">DevaNama</div>
+                <div class="brand-subtitle" data-translate="brand-name-sub">DevaNama</div>
             </div>
 
             <!-- User Profile Card -->
             <div class="profile-card" id="user-profile-section">
                 <!-- Filled dynamically via app.js -->
-                <button class="btn-profile-login" id="btn-login-trigger">🔐 Sadhaka Login</button>
+                <button class="btn-profile-login" id="btn-login-trigger" data-translate="btn-login-trigger">🔐 Sadhaka Login</button>
             </div>
 
             <!-- Configuration & Settings -->
             <div class="settings-section">
-                <h3 class="settings-title">Sadhana Settings</h3>
+                <h3 class="settings-title" data-translate="settings-title">Sadhana Settings</h3>
                 
                 <div class="form-group">
-                    <label for="name-template">Name / Mantra Template</label>
+                    <label for="name-template" data-translate="label-name-template">Name / Mantra Template</label>
                     <select id="name-template" aria-label="Name / Mantra Template">
                         <optgroup label="Lord Rama">
                             <option value="Sri Rama" selected>Sri Rama / श्री राम</option>
@@ -112,10 +127,10 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="script-lang">Script & Language</label>
+                    <label for="script-lang" data-translate="label-script-lang">Script & Language</label>
                     <select id="script-lang" aria-label="Script & Language">
-                        <option value="devanagari" selected>Devanagari (Sanskrit/Hindi/Marathi)</option>
-                        <option value="english">Latin (English)</option>
+                        <option value="devanagari">Devanagari (Sanskrit/Hindi/Marathi)</option>
+                        <option value="english" selected>Latin (English)</option>
                         <option value="telugu">Telugu (తెలుగు)</option>
                         <option value="tamil">Tamil (தமிழ்)</option>
                         <option value="kannada">Kannada (ಕನ್ನಡ)</option>
@@ -128,7 +143,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="writing-target">Milestone Target</label>
+                    <label for="writing-target" data-translate="label-writing-target">Milestone Target</label>
                     <select id="writing-target" aria-label="Milestone Target">
                         <option value="108">108 Names (1 Round)</option>
                         <option value="1008">1,008 Names</option>
@@ -139,7 +154,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="input-mode">Writing Mode</label>
+                    <label for="input-mode" data-translate="label-input-mode">Writing Mode</label>
                     <select id="input-mode" aria-label="Writing Mode">
                         <option value="tap" selected>Meditative Tap (Space/Enter/Click)</option>
                         <option value="spelling">Spelling Chant (Type letters)</option>
@@ -149,9 +164,9 @@
 
             <!-- Sewa Support Widget -->
             <div class="sewa-card">
-                <div class="sewa-title">🌸 DevaNama Sewa</div>
-                <div class="sewa-desc">Help us support servers & keep it ad-free.</div>
-                <button class="btn-sewa-trigger" id="btn-donate-trigger">🙏 Make a Donation</button>
+                <div class="sewa-title" data-translate="sewa-title">🌸 DevaNama Sewa</div>
+                <div class="sewa-desc" data-translate="sewa-desc">Help us support servers & keep it ad-free.</div>
+                <button class="btn-sewa-trigger" id="btn-donate-trigger" data-translate="btn-donate-trigger">🙏 Make a Donation</button>
             </div>
 
             <!-- Diya Flickering Decoration -->
@@ -174,7 +189,7 @@
                     <!-- Flame Inner -->
                     <path class="diya-flame-inner" d="M50,15 C46,24 47,32 50,32 C53,32 54,24 50,15 Z" />
                 </svg>
-                <div class="diya-label">Glow of Mindfulness</div>
+                <div class="diya-label" data-translate="diya-label">Glow of Mindfulness</div>
             </div>
         </aside>
 
@@ -185,15 +200,15 @@
             <section class="dashboard-header" aria-label="Progress Statistics">
                 <div class="stat-card" id="card-total">
                     <div>
-                        <div class="stat-title">Total Written</div>
+                        <div class="stat-title" data-translate="stat-total-written">Total Written</div>
                         <div class="stat-value gold-text" id="stat-total-count">0</div>
                     </div>
-                    <div class="stat-desc">across all sessions</div>
+                    <div class="stat-desc" data-translate="stat-total-desc">across all sessions</div>
                 </div>
                 
                 <div class="stat-card" id="card-target">
                     <div>
-                        <div class="stat-title">Target Goal</div>
+                        <div class="stat-title" data-translate="stat-target-goal">Target Goal</div>
                         <div class="stat-value saffron-text" id="stat-target">10,000</div>
                     </div>
                     <div class="stat-desc" id="stat-target-progress">0% completed</div>
@@ -201,7 +216,7 @@
 
                 <div class="stat-card" id="card-pages">
                     <div>
-                        <div class="stat-title">Pages Filled</div>
+                        <div class="stat-title" data-translate="stat-pages-filled">Pages Filled</div>
                         <div class="stat-value" id="stat-pages">0</div>
                     </div>
                     <div class="stat-desc" id="stat-page-ratio">0 / 60 per page</div>
@@ -209,10 +224,10 @@
 
                 <div class="stat-card" id="card-streak">
                     <div>
-                        <div class="stat-title">Daily Streak</div>
+                        <div class="stat-title" data-translate="stat-daily-streak">Daily Streak</div>
                         <div class="stat-value gold-text" id="stat-streak">0 days</div>
                     </div>
-                    <div class="stat-desc">consistent writing</div>
+                    <div class="stat-desc" data-translate="stat-streak-desc">consistent writing</div>
                 </div>
             </section>
 
@@ -248,8 +263,8 @@
                 <!-- Tap Button Wrapper (Visible only in click/tap mode) -->
                 <div id="tap-container-box" style="display: none;">
                     <button class="tap-mode-btn" id="tap-write-btn">
-                        <span>लिखें</span>
-                        <span class="tap-subtext">Write</span>
+                        <span id="tap-btn-native" data-translate="tap-btn-native">लिखें</span>
+                        <span class="tap-subtext" id="tap-btn-sub" data-translate="tap-btn-sub">Write</span>
                     </button>
                 </div>
 
@@ -261,10 +276,10 @@
                     <button class="control-btn" id="ambient-audio-toggle" aria-label="Toggle Meditative Ambient Sound">
                         🪕 Tanpura: Off
                     </button>
-                    <button class="control-btn" id="btn-export-pdf" aria-label="Download Prasad PDF Document">
+                    <button class="control-btn" id="btn-export-pdf" aria-label="Download Prasad PDF Document" data-translate="btn-export-pdf">
                         📄 Export Book
                     </button>
-                    <button class="control-btn" id="btn-reset-data" aria-label="Reset All Saved Progress" style="border-color: rgba(220,53,69,0.3); color: rgba(220,53,69,0.7);">
+                    <button class="control-btn" id="btn-reset-data" aria-label="Reset All Saved Progress" style="border-color: rgba(220,53,69,0.3); color: rgba(220,53,69,0.7);" data-translate="btn-reset-data">
                         🔄 Reset Progress
                     </button>
                 </div>
@@ -273,7 +288,7 @@
             <!-- Virtual Notebook View -->
             <section class="notebook-container" aria-label="Notebook Visual Display">
                 <div class="notebook-header">
-                    <div class="notebook-title">
+                    <div class="notebook-title" data-translate="notebook-title">
                         📓 Sacred Manuscript Grid
                     </div>
                     <div class="page-nav-controls">
@@ -293,7 +308,7 @@
             <section class="history-section" aria-label="Activity History Log">
                 <div class="history-card">
                     <div class="history-title">
-                        <span>📜 Daily Sadhana Log</span>
+                        <span data-translate="history-title">📜 Daily Sadhana Log</span>
                     </div>
                     <div class="history-list" id="history-items-container">
                         <div class="history-item" style="border: none; justify-content: center; color: var(--text-muted);">
@@ -312,11 +327,11 @@
     <div class="modal-overlay" id="target-modal">
         <div class="modal-content">
             <div class="certificate-frame">
-                <h2 class="certificate-title">Sadhana Milestone Achieved</h2>
+                <h2 class="certificate-title" data-translate="certificate-title">Sadhana Milestone Achieved</h2>
                 <div class="certificate-text" id="modal-certificate-text">
                     Congratulations! You have written the sacred name of Rama 108 times, purifying your thoughts and creating a divine aura.
                 </div>
-                <button class="btn-primary" id="btn-modal-close">Accept Blessings</button>
+                <button class="btn-primary" id="btn-modal-close" data-translate="btn-modal-close">Accept Blessings</button>
             </div>
         </div>
     </div>
@@ -327,8 +342,8 @@
     <div class="modal-overlay" id="donation-modal">
         <div class="modal-content donation-modal-content">
             <button class="modal-close-x" id="btn-donation-close">✕</button>
-            <h2 class="modal-header-title">🌸 Make a Sewa</h2>
-            <p class="modal-header-desc">DevaNama runs purely on voluntary sewa. Help us support servers & keep it ad-free.</p>
+            <h2 class="modal-header-title" data-translate="donation-title">🌸 Make a Sewa</h2>
+            <p class="modal-header-desc" data-translate="donation-desc">DevaNama runs purely on voluntary sewa. Help us support servers & keep it ad-free.</p>
             
             <div class="donation-presets-grid">
                 <button class="preset-amt-btn" data-value="108">₹108</button>
@@ -348,10 +363,10 @@
                     <img src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=upi://pay?pa=devanama@upi%26pn=Devanama%26am=501" alt="UPI QR Code" class="qr-image" id="qr-img-display" style="border: 2px solid var(--gold); border-radius: 8px; padding: 4px; background: white;">
                 </div>
                 <div class="upi-id-text">UPI ID: <strong class="highlight-text" style="color: var(--gold);">devanama@upi</strong></div>
-                <p class="qr-instructions" style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.5rem;">Scan using GPay, PhonePe, Paytm or BHIM to contribute.</p>
+                <p class="qr-instructions" style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.5rem;" data-translate="qr-instructions">Scan using GPay, PhonePe, Paytm or BHIM to contribute.</p>
             </div>
 
-            <button class="btn-primary" id="btn-submit-donation" style="width: 100%; margin-top: 1rem;">Proceed with Card/PayPal</button>
+            <button class="btn-primary" id="btn-submit-donation" style="width: 100%; margin-top: 1rem;" data-translate="btn-submit-donation">Proceed with Card/PayPal</button>
         </div>
     </div>
 

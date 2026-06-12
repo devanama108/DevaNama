@@ -261,6 +261,749 @@ const CLICKABLE_SYLLABLES = {
 
 const PAGE_CAPACITY = 60; // 60 names per page (10 rows of 6)
 
+const TRANSLATIONS = {
+    english: {
+        "landing-title": "देवनाम",
+        "landing-subtitle": "DevaNama",
+        "landing-desc": "Enter your spiritual name to personalize your sadhana book and track your chanting progress.",
+        "label-login-name": "Your Spiritual Name",
+        "label-login-email": "Email Address",
+        "label-login-avatar": "Select Avatar Icon",
+        "label-login-lang": "Select App Language",
+        "btn-login-submit": "Enter Sadhana Space",
+        "btn-google-login": "Continue with Google",
+        "brand-name": "देवनाम",
+        "brand-name-sub": "DevaNama",
+        "mobile-menu-toggle": "⚙️ Settings",
+        "btn-login-trigger": "🔐 Sadhaka Login",
+        "settings-title": "Sadhana Settings",
+        "label-name-template": "Name / Mantra Template",
+        "label-script-lang": "Script & Language",
+        "label-writing-target": "Milestone Target",
+        "label-input-mode": "Writing Mode",
+        "sewa-title": "🌸 DevaNama Sewa",
+        "sewa-desc": "Help us support servers & keep it ad-free.",
+        "btn-donate-trigger": "🙏 Make a Donation",
+        "diya-label": "Glow of Mindfulness",
+        "stat-total-written": "Total Written",
+        "stat-total-desc": "across all sessions",
+        "stat-target-goal": "Target Goal",
+        "stat-pages-filled": "Pages Filled",
+        "stat-daily-streak": "Daily Streak",
+        "stat-streak-desc": "consistent writing",
+        "btn-export-pdf": "📄 Export Book",
+        "btn-reset-data": "🔄 Reset Progress",
+        "notebook-title": "📓 Sacred Manuscript Grid",
+        "history-title": "📜 Daily Sadhana Log",
+        "certificate-title": "Sadhana Milestone Achieved",
+        "btn-modal-close": "Accept Blessings",
+        "donation-title": "🌸 Make a Sewa",
+        "donation-desc": "DevaNama runs purely on voluntary sewa. Help us support servers & keep it ad-free.",
+        "qr-instructions": "Scan using GPay, PhonePe, Paytm or BHIM to contribute.",
+        "btn-submit-donation": "Proceed with Card/PayPal",
+        "tap-btn-native": "Write",
+        "tap-btn-sub": "Write",
+        "input-placeholder": "Click here and start typing...",
+        "spelling-placeholder": "Or type letters: ",
+        "spelling-instruction": "Type the letters <span class=\"accent-word\" id=\"word-target-guide\">{letters}</span> to write a name",
+        "bell-on": "🔔 Sound FX: On",
+        "bell-off": "🔔 Sound FX: Off",
+        "tanpura-on": "🪕 Tanpura: On",
+        "tanpura-off": "🪕 Tanpura: Off",
+        "percent-completed": "{percent}% completed",
+        "names-on-page": "{count} / {capacity} names on current page",
+        "streak-days": "{streak} days",
+        "streak-day": "{streak} day",
+        "no-sessions": "No writing sessions recorded yet. Start typing above to make history.",
+        "history-item-count": "{count} names",
+        "reset-confirm": "Are you sure you want to delete all written names and reset your writing history? This action cannot be undone.",
+        "reset-success": "Progress cleared successfully.",
+        "logout-confirm": "Are you sure you want to log out? Your writing progress will remain saved locally.",
+        "welcome-msg": "🌸 Welcome, <strong>{name}</strong>!<br><br>Your personalized sadhana space is now active. Keep writing to elevate your level.",
+        "level-title": "Level {level}: {title}",
+        "level-names": { 1: "Sadhaka", 2: "Muni", 3: "Yogi", 4: "Rishi" },
+        "milestone-108": "💐 <strong>Sadhana Milestone: 1 Round Completed!</strong><br><br>You have successfully written the divine name of Rama <strong>108 times</strong>. May your life be filled with peace, mindfulness, and strength.",
+        "milestone-1008": "✨ <strong>Great Devotion: 1,008 Names Written!</strong><br><br>Your dedication shines bright. You have completed <strong>1,008 Rama Namas</strong>, writing a beautiful chapter of calm and focus in your digital book.",
+        "milestone-target": "🏆 <strong>Sadhana Milestone Achieved!</strong><br><br>Congratulations! You have completed your goal of writing <strong>{target}</strong> names. Your determination and continuous meditation are highly blessed.",
+        "page-indicator": "Page {current} / {total}",
+        "pdf-title": "DevaNama Prasad Book",
+        "pdf-total": "Total Divine Names Written",
+        "pdf-status": "Status",
+        "pdf-completed": "Completed Milestone",
+        "pdf-date": "Date of Compilation",
+        "pdf-stamp": "Mindful Practice Accomplished",
+        "pdf-page-header": "DevaNama Sadhana Manuscript",
+        "pdf-page": "Page",
+        "pdf-page-footer": "Total Written: {count} | Completed with Devotion"
+    },
+    devanagari: {
+        "landing-title": "देवनाम",
+        "landing-subtitle": "देवनाम",
+        "landing-desc": "सधना पुस्तक को निजीकृत करने और अपने जप प्रगति को ट्रैक करने के लिए अपना आध्यात्मिक नाम दर्ज करें।",
+        "label-login-name": "आपका आध्यात्मिक नाम",
+        "label-login-email": "ईमेल पता",
+        "label-login-avatar": "अवतार आइकन चुनें",
+        "label-login-lang": "ऐप की भाषा चुनें",
+        "btn-login-submit": "साधना क्षेत्र में प्रवेश करें",
+        "btn-google-login": "गूगल के साथ जारी रखें",
+        "brand-name": "देवनाम",
+        "brand-name-sub": "देवनाम",
+        "mobile-menu-toggle": "⚙️ सेटिंग्स",
+        "btn-login-trigger": "🔐 साधक लॉगिन",
+        "settings-title": "साधना सेटिंग्स",
+        "label-name-template": "नाम / मंत्र टेम्पलेट",
+        "label-script-lang": "लिपि और भाषा",
+        "label-writing-target": "मील का पत्थर लक्ष्य",
+        "label-input-mode": "लेखन मोड",
+        "sewa-title": "🌸 देवनाम सेवा",
+        "sewa-desc": "सर्वर का समर्थन करने और इसे विज्ञापन-मुक्त रखने में हमारी सहायता करें।",
+        "btn-donate-trigger": "🙏 दान करें",
+        "diya-label": "सजगता की लौ",
+        "stat-total-written": "कुल लिखित",
+        "stat-total-desc": "सभी सत्रों में",
+        "stat-target-goal": "निर्धारित लक्ष्य",
+        "stat-pages-filled": "भरे हुए पृष्ठ",
+        "stat-daily-streak": "दैनिक साधना",
+        "stat-streak-desc": "निरंतर लेखन",
+        "btn-export-pdf": "📄 पुस्तक निर्यात करें",
+        "btn-reset-data": "🔄 प्रगति रीसेट करें",
+        "notebook-title": "📓 पावन पाण्डुलिपि ग्रिड",
+        "history-title": "📜 दैनिक साधना लॉग",
+        "certificate-title": "साधना का मील का पत्थर हासिल किया",
+        "btn-modal-close": "आशीर्वाद स्वीकार करें",
+        "donation-title": "🌸 सेवा अर्पित करें",
+        "donation-desc": "देवनाम पूरी तरह से स्वैच्छिक सेवा पर चलता है। विज्ञापन-मुक्त साधना के लिए सहायता करें।",
+        "qr-instructions": "योगदान करने के लिए GPay, PhonePe, Paytm या BHIM का उपयोग करके स्कैन करें।",
+        "btn-submit-donation": "कार्ड/पेપલ સાથે આગળ વધો",
+        "tap-btn-native": "लिखें",
+        "tap-btn-sub": "लिखें",
+        "input-placeholder": "यहाँ क्लिक करें और लिखना शुरू करें...",
+        "spelling-placeholder": "या अक्षर टाइप करें: ",
+        "spelling-instruction": "नाम लिखने के लिए अक्षर <span class=\"accent-word\" id=\"word-target-guide\">{letters}</span> टाइप करें",
+        "bell-on": "🔔 ध्वनि प्रभाव: चालू",
+        "bell-off": "🔔 ध्वनि प्रभाव: बंद",
+        "tanpura-on": "🪕 तानपुरा: चालू",
+        "tanpura-off": "🪕 तानपुरा: बंद",
+        "percent-completed": "{percent}% पूर्ण",
+        "names-on-page": "वर्तमान पृष्ठ पर {count} / {capacity} नाम",
+        "streak-days": "{streak} दिन",
+        "streak-day": "{streak} दिन",
+        "no-sessions": "अभी तक कोई लेखन सत्र रिकॉर्ड नहीं हुआ है। इतिहास बनाने के लिए ऊपर लिखना शुरू करें।",
+        "history-item-count": "{count} नाम",
+        "reset-confirm": "क्या आप निश्चित रूप से सभी लिखे गए नामों को हटाना चाहते हैं और अपना लेखन इतिहास रीसेट करना चाहते हैं? इसे वापस नहीं लिया जा सकता।",
+        "reset-success": "प्रगति सफलतापूर्वक साफ़ कर दी गई।",
+        "logout-confirm": "क्या आप निश्चित रूप से लॉग आउट करना चाहते हैं? आपकी लेखन प्रगति स्थानीय रूप से सुरक्षित रहेगी।",
+        "welcome-msg": "🌸 स्वागत है, <strong>{name}</strong>!<br><br>आपका साधना क्षेत्र अब सक्रिय है। अपने स्तर को ऊपर उठाने के लिए लिखते रहें।",
+        "level-title": "स्तर {level}: {title}",
+        "level-names": { 1: "साधक", 2: "मुनि", 3: "योगी", 4: "ऋषि" },
+        "milestone-108": "💐 <strong>साधना मील का पत्थर: 1 चक्र पूर्ण!</strong><br><br>आपने सफलतापूर्वक राम नाम <strong>108 बार</strong> लिख लिया है। आपका जीवन शांति और सजगता से परिपूर्ण हो।",
+        "milestone-1008": "✨ <strong>महान भक्ति: 1,008 नाम लिखे गए!</strong><br><br>आपका समर्पण अद्भुत है। आपने <strong>1,008 राम नाम</strong> पूरे कर लिए हैं, अपनी डिजिटल पुस्तक में शांति का एक सुंदर अध्याय लिखा है।",
+        "milestone-target": "🏆 <strong>साधना का लक्ष्य प्राप्त हुआ!</strong><br><br>बधाई हो! आपने <strong>{target}</strong> नाम लिखने का अपना लक्ष्य पूरा कर लिया है। आपका निरंतर ध्यान धन्य है।",
+        "page-indicator": "पृष्ठ {current} / {total}",
+        "pdf-title": "देवनाम साधना पुस्तक",
+        "pdf-total": "कुल लिखित पावन नाम",
+        "pdf-status": "स्थिति",
+        "pdf-completed": "मील का पत्थर पूर्ण",
+        "pdf-date": "संकलन की तिथि",
+        "pdf-stamp": "सजय साधना संपन्न",
+        "pdf-page-header": "देवनाम साधना पाण्डुलिपि",
+        "pdf-page": "पृष्ठ",
+        "pdf-page-footer": "कुल लिखित: {count} | श्रद्धापूर्वक संपन्न"
+    },
+    telugu: {
+        "landing-title": "దేవనామ",
+        "landing-subtitle": "DevaNama",
+        "landing-desc": "మీ సాధన పుస్తకాన్ని అనుకూలీకరించడానికి మరియు మీ జప పురోగతిని ట్రాక్ చేయడానికి మీ ఆధ్యాత్మిక నామాన్ని నమోదు చేయండి.",
+        "label-login-name": "మీ ఆధ్యాత్మిక నామం",
+        "label-login-email": "ఈమెయిల్ చిరునామా",
+        "label-login-avatar": "అవతార్ చిహ్నాన్ని ఎంచుకోండి",
+        "label-login-lang": "యాప్ భాషను ఎంచుకోండి",
+        "btn-login-submit": "సాధనా స్థలంలోకి ప్రవేశించండి",
+        "btn-google-login": "గూగుల్ తో కొనసాగించండి",
+        "brand-name": "దేవనామ",
+        "brand-name-sub": "DevaNama",
+        "mobile-menu-toggle": "⚙️ సెట్టింగులు",
+        "btn-login-trigger": "🔐 సాధక లాగిన్",
+        "settings-title": "సాధన సెట్టింగులు",
+        "label-name-template": "ನಾಮ / ಮಂತ್ರ ಟೆಂಪ್ಲೇಟ್",
+        "label-script-lang": "లిపి & భాష",
+        "label-writing-target": "మైలురాయి లక్ష్యం",
+        "label-input-mode": "రాత విధానం",
+        "sewa-title": "🌸 దేవనామ సేవ",
+        "sewa-desc": "సర్వర్‌లకు మద్దతు ఇవ్వడానికి & ప్రకటనలు లేకుండా ఉంచడానికి మాకు సహాయం చేయండి.",
+        "btn-donate-trigger": "🙏 విరాళం ఇవ్వండి",
+        "diya-label": "ధ్యాన జ్యోతి",
+        "stat-total-written": "మొತ್ತం రాసినవి",
+        "stat-total-desc": "అన్ని సెషన్లలో కలిపి",
+        "stat-target-goal": "లక్ష్యం",
+        "stat-pages-filled": "నిండిన పేజీలు",
+        "stat-daily-streak": "రోజువారీ సాధన",
+        "stat-streak-desc": "నిరంతర రాత",
+        "btn-export-pdf": "📄 పుస్తకాన్ని డౌన్‌లోഡ് చేయి",
+        "btn-reset-data": "🔄 పురోగతిని రీసెట్ చేయి",
+        "notebook-title": "📓 పవిత్ర గ్రంథ గ్రిడ్",
+        "history-title": "📜 రోజువారీ సాధన లాగ్",
+        "certificate-title": "సాధన మైలురాయి సాధించబడింది",
+        "btn-modal-close": "ఆశీర్వాదాలు స్వీకరించండి",
+        "donation-title": "🌸 సేవ చేయండి",
+        "donation-desc": "దేవనామ పూర్తిగా స్వచ్ఛంద సేవ ద్వారా నడుస్తుంది. ప్రకటనలు లేని ధ్యానం కోసం సహాయం చేయండి.",
+        "qr-instructions": "సహాయం చేయడానికి GPay, PhonePe ఉపయోగించి స్కాన్ చేయండి.",
+        "btn-submit-donation": "కార్డ్/పేపాల్‌తో కొనసాగండి",
+        "tap-btn-native": "రాయండి",
+        "tap-btn-sub": "Write",
+        "input-placeholder": "ఇక్కడ క్లిక్ చేసి రాయడం ప్రారంభించండి...",
+        "spelling-placeholder": "లేదా అక్షరాలు టైప్ చేయండి: ",
+        "spelling-instruction": "ನಾಮ ಬರೆಯಲು <span class=\"accent-word\" id=\"word-target-guide\">{letters}</span> అక్షరాలను టైప్ చేయండి",
+        "bell-on": "🔔 గంట శబ్దం: ఆన్",
+        "bell-off": "🔔 గంట శబ్దం: ఆఫ్",
+        "tanpura-on": "🪕 తంబురా: ఆన్",
+        "tanpura-off": "🪕 తంబురా: ఆఫ్",
+        "percent-completed": "{percent}% పూర్తయింది",
+        "names-on-page": "ప్రస్తుత పేజీలో {count} / {capacity} నామాలు",
+        "streak-days": "{streak} రోజులు",
+        "streak-day": "{streak} రోజు",
+        "no-sessions": "ఇంకా ఎలాంటి రాత సెషన్లు నమోదు కాలేదు. రాయడం ప్రారంభించండి.",
+        "history-item-count": "{count} నామాలు",
+        "reset-confirm": "మీరు రాసిన నామాలను తొలగించి, పురోగతిని రీసెట్ చేయాలనుకుంటున్నారా? దీనిని తిరిగి మార్చలేరు.",
+        "reset-success": "పురోగతి విజయవంతంగా తుడిచివేయబడింది.",
+        "logout-confirm": "మీరు ఖచ్చితంగా లాగ్ అవుట్ చేయాలనుకుంటున్నారా? మీ పురోగతి స్థానికంగా భద్రంగా ఉంటుంది.",
+        "welcome-msg": "🌸 సుస్వాగతం, <strong>{name}</strong>!<br><br>మీ సాధనా స్థలం సిద్ధంగా ఉంది. సాధన కొనసాగించండి.",
+        "level-title": "స్థాయి {level}: {title}",
+        "level-names": { 1: "సాధకుడు", 2: "ముని", 3: "యోగి", 4: "ఋషి" },
+        "milestone-108": "💐 <strong>సాధన మైలురాయి: 1 రౌండ్ పూర్తయింది!</strong><br><br>మీరు విజయవంతంగా రామ నామాన్ని <strong>108 సార్లు</strong> రాశారు. మీ జీవితం ప్రశాంతతతో నిండాలి.",
+        "milestone-1008": "✨ <strong>గొప్ప భક્તિ: 1,008 నామాలు రాయబడ్డాయి!</strong><br><br>మీ శ్రద్ధ ప్రశంసనీయం. మీరు <strong>1,008 రామ నామాలు</strong> పూర్తి చేశారు.",
+        "milestone-target": "🏆 <strong>సాధన లక్ష్యం చేరింది!</strong><br><br>అభినందనలు! మీరు ఎంచుకున్న <strong>{target}</strong> నామాల లక్ష్యాన్ని విజయవంతంగా పూర్తి చేశారు.",
+        "page-indicator": "పేజీ {current} / {total}",
+        "pdf-title": "దేవనామ సాధన పుస్తకం",
+        "pdf-total": "రాసిన మొత్తం పవిత్ర నామాలు",
+        "pdf-status": "స్థితి",
+        "pdf-completed": "లక్ష్యం పూర్తయింది",
+        "pdf-date": "క్రోඩీకరణ తేదీ",
+        "pdf-stamp": "ధ్యాన సాధన పూర్తయింది",
+        "pdf-page-header": "దేవనామ సాధన గ్రంథం",
+        "pdf-page": "పేజీ",
+        "pdf-page-footer": "మొత్తం రాసినవి: {count} | భక్తితో సమర్పించబడింది"
+    },
+    tamil: {
+        "landing-title": "தேவநாமா",
+        "landing-subtitle": "DevaNama",
+        "landing-desc": "உங்கள் சாதன புத்தகத்தைத் தனிப்பயனாக்கவும், உங்கள் ஜப முன்னேற்றத்தைக் கண்காணிக்கவும் உங்கள் ஆன்மீகப் பெயரை உள்ளிடவும்.",
+        "label-login-name": "உங்கள் ஆன்மீகப் பெயர்",
+        "label-login-email": "மின்னஞ்சல் முகவரி",
+        "label-login-avatar": "அவதாரத்தை தேர்வு செய்யவும்",
+        "label-login-lang": "மொழியை தேர்வு செய்யவும்",
+        "btn-login-submit": "சாதன பகுதிக்குள் நுழையவும்",
+        "btn-google-login": "கூகிள் மூலம் தொடரவும்",
+        "brand-name": "தேவநாமா",
+        "brand-name-sub": "DevaNama",
+        "mobile-menu-toggle": "⚙️ அமைப்புகள்",
+        "btn-login-trigger": "🔐 சாதகர் உள்நுழைவு",
+        "settings-title": "சாதன அமைப்புகள்",
+        "label-name-template": "நாமம் / மந்திர வடிவம்",
+        "label-script-lang": "எழுத்து வடிவம் & மொழி",
+        "label-writing-target": "மைல்கல் இலக்கு",
+        "label-input-mode": "எழுதும் முறை",
+        "sewa-title": "🌸 தேவநாமா சேவை",
+        "sewa-desc": "விளம்பரங்கள் இல்லாமல் இந்த சேவையை தொடர எங்களுக்கு ஆதரவளிக்கவும்.",
+        "btn-donate-trigger": "🙏 நன்கொடை வழங்க",
+        "diya-label": "தியான ஜோதி",
+        "stat-total-written": "மொத்தம் எழுதியவை",
+        "stat-total-desc": "அனைத்து அமர்வுகளிலும்",
+        "stat-target-goal": "இலக்கு",
+        "stat-pages-filled": "நிரப்பப்பட்ட பக்கங்கள்",
+        "stat-daily-streak": "தினசரி சாதனை",
+        "stat-streak-desc": "தொடர்ச்சியான எழுத்து",
+        "btn-export-pdf": "📄 புத்தகத்தை பதிவிறக்க",
+        "btn-reset-data": "🔄 முன்னேற்றத்தை மீட்டமை",
+        "notebook-title": "📓 புனித ஏடு",
+        "history-title": "📜 தினசரி சாதனை பதிவு",
+        "certificate-title": "சாதனை மைல்கல் எட்டப்பட்டது",
+        "btn-modal-close": "ஆசிகளை ஏற்கவும்",
+        "donation-title": "🌸 சேவை செய்யுங்கள்",
+        "donation-desc": "தேவநாமா முற்றிலும் தன்னார்வ சேவை மூலம் இயங்குகிறது.",
+        "qr-instructions": "கூகிள் பே, போன்பே மூலம் ஸ்கேன் செய்து பங்களிக்கவும்.",
+        "btn-submit-donation": "கார்டு/பேபால் மூலம் தொடரவும்",
+        "tap-btn-native": "எழுதுக",
+        "tap-btn-sub": "Write",
+        "input-placeholder": "இங்கே கிளிக் செய்து எழுதத் தொடங்கவும்...",
+        "spelling-placeholder": "அல்லது எழுத்துக்களை தட்டச்சு செய்க: ",
+        "spelling-instruction": "நாமத்தை எழுத <span class=\"accent-word\" id=\"word-target-guide\">{letters}</span> என்ற எழுத்துக்களை தட்டச்சு செய்க",
+        "bell-on": "🔔 மணி ஒலி: ஆன்",
+        "bell-off": "🔔 மணி ஒலி: ஆஃப்",
+        "tanpura-on": "🪕 தம்புரா: ஆன்",
+        "tanpura-off": "🪕 தம்புரா: ஆஃப்",
+        "percent-completed": "{percent}% முடிந்தது",
+        "names-on-page": "நடப்பு பக்கத்தில் {count} / {capacity} நாமங்கள்",
+        "streak-days": "{streak} நாட்கள்",
+        "streak-day": "{streak} நாள்",
+        "no-sessions": "இன்னும் பதிவுகள் இல்லை. எழுதத் தொடங்குங்கள்.",
+        "history-item-count": "{count} நாமங்கள்",
+        "reset-confirm": "எழுதிய நாமங்களை நீக்கி முன்னேற்றத்தை மீட்டமைக்க விரும்புகிறீர்களா? இதை மாற்ற முடியாது.",
+        "reset-success": "முன்னேற்றம் வெற்றிகரமாக மீட்டமைக்கப்பட்டது.",
+        "logout-confirm": "நீங்கள் வெளியேற விரும்புகிறீர்களா? உங்கள் முன்னேற்றம் சேமிக்கப்படும்.",
+        "welcome-msg": "🌸 வரவேற்கிறோம், <strong>{name}</strong>!<br><br>உங்கள் சாதன பகுதி தயாராக உள்ளது. சாதனையைத் தொடரவும்.",
+        "level-title": "நிலை {level}: {title}",
+        "level-names": { 1: "சாதகர்", 2: "முனி", 3: "யோகி", 4: "ரிஷி" },
+        "milestone-108": "💐 <strong>மைல்கல்: 1 சுற்று முடிந்தது!</strong><br><br>நீங்கள் <strong>108 முறை</strong> ராம நாமம் எழுதியுள்ளீர்கள்.",
+        "milestone-1008": "✨ <strong>பக்தி சாதனை: 1,008 நாமங்கள்!</strong><br><br>நீங்கள் <strong>1,008 முறை</strong> ராம நாமம் எழுதியுள்ளீர்கள்.",
+        "milestone-target": "🏆 <strong>இலக்கு எட்டப்பட்டது!</strong><br><br>வாழ்த்துகள்! உங்கள் <strong>{target}</strong> நாமங்கள் எழுதும் இலக்கை அடைந்துவிட்டீர்கள்.",
+        "page-indicator": "பக்கம் {current} / {total}",
+        "pdf-title": "தேவநாமா சாதன புத்தகம்",
+        "pdf-total": "எழுதப்பட்ட மொத்த புனித நாமங்கள்",
+        "pdf-status": "நிலை",
+        "pdf-completed": "இலக்கு எட்டப்பட்டது",
+        "pdf-date": "தொகுக்கப்பட்ட தேதி",
+        "pdf-stamp": "மன அமைதியுடன் சாதன முடிந்தது",
+        "pdf-page-header": "தேவநாமா சாதன ஏடு",
+        "pdf-page": "பக்கம்",
+        "pdf-page-footer": "மொத்தம் எழுதியவை: {count} | பக்தியுடன் சமர்ப்பிக்கப்பட்டது"
+    },
+    kannada: {
+        "landing-title": "ದೇವನಾಮ",
+        "landing-subtitle": "DevaNama",
+        "landing-desc": "ನಿಮ್ಮ ಸಾಧನಾ ಪುಸ್ತಕವನ್ನು ವೈಯಕ್ತೀಕರಿಸಲು ಮತ್ತು ಪ್ರಗತಿಯನ್ನು ಟ್ರ್ಯಾಕ್ ಮಾಡಲು ನಿಮ್ಮ ಆಧ್ಯಾತ್ಮಿಕ ಹೆಸರನ್ನು ನಮೂದಿಸಿ.",
+        "label-login-name": "ನಿಮ್ಮ ಆಧ್ಯಾತ್ಮಿಕ ಹೆಸರು",
+        "label-login-email": "ಇಮೇಲ್ ವಿಳಾಸ",
+        "label-login-avatar": "ಅವತಾರವನ್ನು ಆರಿಸಿ",
+        "label-login-lang": "ಭಾಷೆಯನ್ನು ಆರಿಸಿ",
+        "btn-login-submit": "ಸಾಧನಾ ಸ್ಥಳಕ್ಕೆ ಪ್ರವೇಶಿಸಿ",
+        "btn-google-login": "ಗೂಗಲ್ ಮೂಲಕ ಮುಂದುವರಿಯಿರಿ",
+        "brand-name": "ದೇವನಾಮ",
+        "brand-name-sub": "DevaNama",
+        "mobile-menu-toggle": "⚙️ ಸೆಟ್ಟಿಂಗ್ಸ್",
+        "btn-login-trigger": "🔐 ಸಾಧಕ ಲಾಗಿನ್",
+        "settings-title": "ಸಾಧನಾ ಸೆಟ್ಟಿಂಗ್ಸ್",
+        "label-name-template": "ನಾಮ / ಮಂತ್ರ ಟೆಂಪ್ಲೇಟ್",
+        "label-script-lang": "ಲಿಪಿ ಮತ್ತು ಭಾಷೆ",
+        "label-writing-target": "ಮೈಲುಗಲ್ಲು ಗುರಿ",
+        "label-input-mode": "ಬರೆಯುವ ವಿಧಾನ",
+        "sewa-title": "🌸 ದೇವನಾಮ ಸೇವೆ",
+        "sewa-desc": "ನಮ್ಮ ಸೇವೆಯನ್ನು ಜಾಹೀರಾತು ರಹಿತವಾಗಿ ಮುಂದುವರಿಸಲು ಸಹಾಯ ಮಾಡಿ.",
+        "btn-donate-trigger": "🙏 ದೇಣಿಗೆ ನೀಡಿ",
+        "diya-label": "ಧ್ಯಾನದ ಜ್ಯೋತಿ",
+        "stat-total-written": "ಒಟ್ಟು ಬರೆದದ್ದು",
+        "stat-total-desc": "ಎಲ್ಲಾ ಸೆಷನ್‌ಗಳಲ್ಲಿ",
+        "stat-target-goal": "ಗುರಿ",
+        "stat-pages-filled": "ತುಂಬಿದ ಪುಟಗಳು",
+        "stat-daily-streak": "ದೈನಂದಿನ ಸಾಧನೆ",
+        "stat-streak-desc": "ನಿರಂತರ ಬರವಣಿಗೆ",
+        "btn-export-pdf": "📄 ಪುಸ್ತಕ ರಫ್ತು ಮಾಡಿ",
+        "btn-reset-data": "🔄 ಪ್ರಗತಿ ಮರುಹೊಂದಿಸಿ",
+        "notebook-title": "📓 ಪವಿತ್ರ ಹಸ್ತಪ್ರತಿ ಗ್ರಿಡ್",
+        "history-title": "📜 ದೈನಂದಿನ ಸಾಧನಾ ಲಾಗ್",
+        "certificate-title": "ಸಾಧನಾ ಮೈಲುಗಲ್ಲು ತಲುಪಲಾಗಿದೆ",
+        "btn-modal-close": "ಆಶೀರ್ವಾದ ಸ್ವೀಕರಿಸಿ",
+        "donation-title": "🌸 ಸೇವೆ ಸಲ್ಲಿಸಿ",
+        "donation-desc": "ದೇವನಾಮ ಸಂಪೂರ್ಣವಾಗಿ ಸ್ವಯಂಪ್ರೇರಿತ ಸೇವೆಯಿಂದ ನಡೆಯುತ್ತದೆ.",
+        "qr-instructions": "ಕೊಡುಗೆ ನೀಡಲು GPay, PhonePe ಬಳಸಿ ಸ್ಕ್ಯಾನ್ ಮಾಡಿ.",
+        "btn-submit-donation": "ಕಾರ್ಡ್/ಪೇಪಾಲ್‌ನೊಂದಿಗೆ ಮುಂದುವರಿಯಿರಿ",
+        "tap-btn-native": "ಬರೆಯಿರಿ",
+        "tap-btn-sub": "Write",
+        "input-placeholder": "ಇಲ್ಲಿ ಕ್ಲಿಕ್ ಮಾಡಿ ಮತ್ತು ಬರೆಯಲು ಪ್ರಾರಂಭಿಸಿ...",
+        "spelling-placeholder": "ಅಥವಾ ಅಕ್ಷರಗಳನ್ನು ಟೈಪ್ ಮಾಡಿ: ",
+        "spelling-instruction": "ನಾಮ ಬರೆಯಲು <span class=\"accent-word\" id=\"word-target-guide\">{letters}</span> ಅಕ್ಷರಗಳನ್ನು ಟೈಪ್ ಮಾಡಿ",
+        "bell-on": "🔔 ಗಂಟೆ ಶಬ್ದ: ಆನ್",
+        "bell-off": "🔔 ಗಂಟೆ ಶಬ್ದ: ಆಫ್",
+        "tanpura-on": "🪕 ತಂಬೂರಿ: ಆನ್",
+        "tanpura-off": "🪕 ತಂಬೂರಿ: ಆಫ್",
+        "percent-completed": "{percent}% ಪೂರ್ಣಗೊಂಡಿದೆ",
+        "names-on-page": "ಪ್ರಸ್ತುತ ಪುಟದಲ್ಲಿ {count} / {capacity} ನಾಮಗಳು",
+        "streak-days": "{streak} ದಿನಗಳು",
+        "streak-day": "{streak} ದಿನ",
+        "no-sessions": "ಇನ್ನೂ ಯಾವುದೇ ಸಾಧನೆ ದಾಖಲಾಗಿಲ್ಲ. ಬರೆಯಲು ಪ್ರಾರಂಭಿಸಿ.",
+        "history-item-count": "{count} ನಾಮಗಳು",
+        "reset-confirm": "ಬರೆದ ಎಲ್ಲಾ ನಾಮಗಳನ್ನು ಅಳಿಸಲು ಮತ್ತು ಪ್ರಗತಿಯನ್ನು ಮರುಹೊಂದಿಸಲು ಖಚಿತವೇ? ಇದನ್ನು ರದ್ದುಗೊಳಿಸಲಾಗುವುದಿಲ್ಲ.",
+        "reset-success": "ಪ್ರಗತಿಯನ್ನು ಯಶಸ್ವಿಯಾಗಿ ಅಳಿಸಲಾಗಿದೆ.",
+        "logout-confirm": "ಲಾಗ್ ಔಟ್ ಮಾಡಲು ಖಚಿತವೇ? ನಿಮ್ಮ ಪ್ರಗತಿ ಉಳಿಯುತ್ತದೆ.",
+        "welcome-msg": "🌸 ಸುಸ್ವಾಗತ, <strong>{name}</strong>!<br><br>ನಿಮ್ಮ ಸಾಧನಾ ಸ್ಥಳ ಸಿದ್ಧವಾಗಿದೆ. ಸಾಧನೆ ಮುಂದುವರಿಸಿ.",
+        "level-title": "ಹಂತ {level}: {title}",
+        "level-names": { 1: "ಸಾಧಕ", 2: "ಮುನಿ", 3: "ಯೋಗಿ", 4: "ಋಷಿ" },
+        "milestone-108": "💐 <strong>ಮೈಲುಗಲ್ಲು: 1 ಚಕ್ರ ಪೂರ್ಣಗೊಂಡಿದೆ!</strong><br><br>ನೀವು <strong>108 ಬಾರಿ</strong> ರಾಮ ನಾಮ ಬರೆದಿದ್ದೀರಿ.",
+        "milestone-1008": "✨ <strong>ಭಕ್ತಿ ಸಾಧನೆ: 1,008 ನಾಮಗಳು!</strong><br><br>ನೀವು <strong>1,008 ಬಾರಿ</strong> ರಾಮ ನಾಮ ಬರೆದಿದ್ದೀರಿ.",
+        "milestone-target": "🏆 <strong>ಸಾಧನಾ ಗುರಿ ತಲುಪಲಾಗಿದೆ!</strong><br><br>ಅಭಿನಂದನೆಗಳು! ನಿಮ್ಮ <strong>{target}</strong> ನಾಮಗಳ ಗುರಿಯನ್ನು ತಲುಪಿದ್ದೀರಿ.",
+        "page-indicator": "ಪುಟ {current} / {total}",
+        "pdf-title": "ದೇವನಾಮ ಸಾಧನ ಪುಸ್ತಕ",
+        "pdf-total": "ಒಟ್ಟು ಬರೆದ ಪವಿತ್ರ ನಾಮಗಳು",
+        "pdf-status": "ಸ್ಥಿತಿ",
+        "pdf-completed": "ಗುರಿ ತಲುಪಲಾಗಿದೆ",
+        "pdf-date": "ಸಂಕಲನದ ದಿನಾಂಕ",
+        "pdf-stamp": "ಧ್ಯಾನ ಸಾಧನೆ ಪೂರ್ಣಗೊಂಡಿದೆ",
+        "pdf-page-header": "ದೇವನಾಮ ಸಾಧನಾ ಹಸ್ತಪ್ರತಿ",
+        "pdf-page": "ಪುಟ",
+        "pdf-page-footer": "ಒಟ್ಟು ಬರೆದದ್ದು: {count} | ಭಕ್ತಿಯಿಂದ ಸಮರ್ಪಿಸಲಾಗಿದೆ"
+    },
+    bengali: {
+        "landing-title": "দেবনাম",
+        "landing-subtitle": "DevaNama",
+        "landing-desc": "আপনার সাধনা বই কাস্টমাইজ করতে এবং জপ অগ্রগতি ট্র্যাক করতে আপনার আধ্যাত্মিক নাম লিখুন।",
+        "label-login-name": "আপনার আধ্যাত্মিক নাম",
+        "label-login-email": "ইমেল ঠিকানা",
+        "label-login-avatar": "অবতার আইকন নির্বাচন করুন",
+        "label-login-lang": "অ্যাপের ভাষা নির্বাচন করুন",
+        "btn-login-submit": "সাধনা ক্ষেত্রে প্রবেশ করুন",
+        "btn-google-login": "গুগল এর সাথে চালিয়ে যান",
+        "brand-name": "দেবনাম",
+        "brand-name-sub": "DevaNama",
+        "mobile-menu-toggle": "⚙️ সেটিংস",
+        "btn-login-trigger": "🔐 সাধক লগইন",
+        "settings-title": "সাধনা সেটিংস",
+        "label-name-template": "নাম / মন্ত্র টেমপ্লেট",
+        "label-script-lang": "লিপি ও ভাষা",
+        "label-writing-target": "লক্ষ্য মাত্রা",
+        "label-input-mode": "লিখন মোড",
+        "sewa-title": "🌸 দেবনাম সেবা",
+        "sewa-desc": "বিজ্ঞাপনমুক্ত সাধনা ধরে রাখতে আমাদের সাহায্য করুন।",
+        "btn-donate-trigger": "🙏 দান করুন",
+        "diya-label": "সচেতনতার আলো",
+        "stat-total-written": "মোট লিখিত",
+        "stat-total-desc": "সব সেশনে",
+        "stat-target-goal": "লক্ষ্য",
+        "stat-pages-filled": "পৃষ্ঠা পূর্ণ",
+        "stat-daily-streak": "দৈনিক সাধনা",
+        "stat-streak-desc": "নিরবচ্ছিন্ন লিখন",
+        "btn-export-pdf": "📄 বই রপ্তানি করুন",
+        "btn-reset-data": "🔄 অগ্রগতি রিসেট করুন",
+        "notebook-title": "📓 পবিত্র পাণ্ডুলিপি গ্রিড",
+        "history-title": "📜 দৈনিক সাধনা লগ",
+        "certificate-title": "সাধনা মাইলফলক অর্জিত",
+        "btn-modal-close": "আশীর্বাদ গ্রহণ করুন",
+        "donation-title": "🌸 সেবা করুন",
+        "donation-desc": "দেবনাম সম্পূর্ণ স্বেচ্ছাসেবী সেবার উপর চলে।",
+        "qr-instructions": "সাহায্য করতে জিপে বা ফোনপে দিয়ে স্ক্যান করুন।",
+        "btn-submit-donation": "কার্ড/পেপ্যাল দিয়ে এগিয়ে যান",
+        "tap-btn-native": "লিখুন",
+        "tap-btn-sub": "Write",
+        "input-placeholder": "এখানে ক্লিক করে লেখা শুরু করুন...",
+        "spelling-placeholder": "অথবা অক্ষর টাইপ করুন: ",
+        "spelling-instruction": "নাম লিখতে <span class=\"accent-word\" id=\"word-target-guide\">{letters}</span> অক্ষর টাইপ করুন",
+        "bell-on": "🔔 শব্দ প্রভাব: চালু",
+        "bell-off": "🔔 শব্দ প্রভাব: বন্ধ",
+        "tanpura-on": "🪕 তানপুরা: চালু",
+        "tanpura-off": "🪕 তানপুরা: বন্ধ",
+        "percent-completed": "{percent}% সম্পূর্ণ",
+        "names-on-page": "বর্তমান পৃষ্ঠায় {count} / {capacity} নাম",
+        "streak-days": "{streak} দিন",
+        "streak-day": "{streak} দিন",
+        "no-sessions": "কোন সেশন রেকর্ড করা হয়নি। লেখা শুরু করুন।",
+        "history-item-count": "{count} নাম",
+        "reset-confirm": "আপনি কি সমস্ত নাম মুছে ফেলে অগ্রগতি রিসেট করতে চান? এটি পূর্বাবস্থায় ফেরানো যাবে না।",
+        "reset-success": "অগ্রগতি সফলভাবে মুছে ফেলা হয়েছে।",
+        "logout-confirm": "আপনি কি লগ আউট করতে চান? আপনার অগ্রগতি সংরক্ষিত থাকবে।",
+        "welcome-msg": "🌸 স্বাগতম, <strong>{name}</strong>!<br><br>আপনার সাধনা ক্ষেত্র এখন সক্রিয়। সাধনা করতে থাকুন।",
+        "level-title": "স্তর {level}: {title}",
+        "level-names": { 1: "সাধক", 2: "মুনি", 3: "যোগী", 4: "ঋষি" },
+        "milestone-108": "💐 <strong>মাইলফলক: ১ চক্র সম্পূর্ণ!</strong><br><br>আপনি <strong>১০৮ বার</strong> রাম নাম লিখেছেন।",
+        "milestone-1008": "✨ <strong>ভক্তি সাধনা: ১,০০৮ নাম!</strong><br><br>আপনি <strong>১,০০৮ বার</strong> রাম নাম লিখেছেন।",
+        "milestone-target": "🏆 <strong>সাধনা লক্ষ্য অর্জিত!</strong><br><br>অভিনন্দন! আপনার <strong>{target}</strong> নামের লক্ষ্য পূর্ণ হয়েছে।",
+        "page-indicator": "পৃষ্ঠা {current} / {total}",
+        "pdf-title": "দেবনাম সাধনা বই",
+        "pdf-total": "মোট লিখিত পবিত্র নাম",
+        "pdf-status": "স্থিতি",
+        "pdf-completed": "লক্ষ্য অর্জিত হয়েছে",
+        "pdf-date": "সংকলনের তারিখ",
+        "pdf-stamp": "মনোযোগ সহ সাধনা সম্পন্ন",
+        "pdf-page-header": "দেবনাম সাধনা পাণ্ডুলিপি",
+        "pdf-page": "পৃষ্ঠা",
+        "pdf-page-footer": "মোট লিখিত: {count} | ভক্তিভরে সমর্পিত"
+    },
+    gujarati: {
+        "landing-title": "દેવનામ",
+        "landing-subtitle": "DevaNama",
+        "landing-desc": "તમારી સાધના પુસ્તકને કસ્ટમાઇઝ કરવા અને તમારી જપ પ્રગતિને ટ્રૅક કરવા માટે તમારું આધ્યાત્મિક નામ લખો.",
+        "label-login-name": "આધ્યાત્મિક નામ",
+        "label-login-email": "ઇમેઇલ સરનામું",
+        "label-login-avatar": "અવતાર ચિહ્ન પસંદ કરો",
+        "label-login-lang": "એપની ભાષા પસંદ કરો",
+        "btn-login-submit": "સાધના સ્થાનમાં પ્રવેશ કરો",
+        "btn-google-login": "ગૂગલ સાથે ચાલુ રાખો",
+        "brand-name": "દેવનામ",
+        "brand-name-sub": "DevaNama",
+        "mobile-menu-toggle": "⚙️ સેટિંગ્સ",
+        "btn-login-trigger": "🔐 સાધક લોગિન",
+        "settings-title": "સાધના સેટિંગ્સ",
+        "label-name-template": "નામ / મંત્ર ટેમ્પલેટ",
+        "label-script-lang": "લિપિ અને ભાષા",
+        "label-writing-target": "લક્ષ્ય",
+        "label-input-mode": "લેખન પદ્ધતિ",
+        "sewa-title": "🌸 દેવનામ સેવા",
+        "sewa-desc": "જાહેરાત-મુક્ત સાધના જાળવી રાખવા માટે અમને મદદ કરો.",
+        "btn-donate-trigger": "🙏 દાન કરો",
+        "diya-label": "જાગૃતિની જ્યોત",
+        "stat-total-written": "કુલ લખેલા",
+        "stat-total-desc": "બધા સત્રોમાં",
+        "stat-target-goal": "લક્ષ્ય",
+        "stat-pages-filled": "ભરાયેલા પાના",
+        "stat-daily-streak": "દૈનિક સાધના",
+        "stat-streak-desc": "નિરંતર લેખન",
+        "btn-export-pdf": "📄 પુસ્તક ડાઉનલોડ કરો",
+        "btn-reset-data": "🔄 પ્રગતિ રીસેટ કરો",
+        "notebook-title": "📓 પવિત્ર હસ્તપ્રત ગ્રીડ",
+        "history-title": "📜 દૈનિક સાધના લોગ",
+        "certificate-title": "સાધના લક્ષ્ય પ્રાપ્ત થયું",
+        "btn-modal-close": "આશીર્વાદ સ્વીકારો",
+        "donation-title": "🌸 સેવા કરો",
+        "donation-desc": "દેવનામ સંપૂર્ણપણે સ્વૈચ્છિક સેવા પર ચાલે છે.",
+        "qr-instructions": "યોગદાન આપવા માટે GPay, PhonePe દ્વારા સ્કેન કરો.",
+        "btn-submit-donation": "કાર્ડ/પેપાલ સાથે આગળ વધો",
+        "tap-btn-native": "લખો",
+        "tap-btn-sub": "Write",
+        "input-placeholder": "અહીં ક્લિક કરો અને લખવાનું શરૂ કરો...",
+        "spelling-placeholder": "અથવા અક્ષરો ટાઇપ કરો: ",
+        "spelling-instruction": "નામ લખવા માટે <span class=\"accent-word\" id=\"word-target-guide\">{letters}</span> અક્ષરો ટાઇપ કરો",
+        "bell-on": "🔔 ધ્વનિ અસર: ચાલુ",
+        "bell-off": "🔔 ધ્વનિ અસર: બંધ",
+        "tanpura-on": "🪕 તાનપુરા: ચાલુ",
+        "tanpura-off": "🪕 તાનપુરા: બંધ",
+        "percent-completed": "{percent}% પૂર્ણ",
+        "names-on-page": "હાલના પાના પર {count} / {capacity} નામો",
+        "streak-days": "{streak} દિવસો",
+        "streak-day": "{streak} દિવસ",
+        "no-sessions": "હજુ સુધી કોઈ સત્ર નોંધાયું નથી. લખવાનું શરૂ કરો.",
+        "history-item-count": "{count} નામો",
+        "reset-confirm": "શું તમે બધા નામો કાઢી નાખી પ્રગતિ રીસેટ કરવા માંગો છો? આ બદલી શકાશે નહીં.",
+        "reset-success": "પ્રગતિ સફળતાપૂર્વક સાફ કરવામાં આવી.",
+        "logout-confirm": "શું લોગ આઉટ કરવું છે? તમારી પ્રગતિ સુરક્ષિત રહેશે.",
+        "welcome-msg": "🌸 સ્વાગત છે, <strong>{name}</strong>!<br><br>તમારી સાધના જગ્યા સક્રિય છે. પ્રગતિ કરતા રહો.",
+        "level-title": "સ્તર {level}: {title}",
+        "level-names": { 1: "સાધક", 2: "મુનિ", 3: "યોગી", 4: "ઋષિ" },
+        "milestone-108": "💐 <strong>માઇલ્સટોન: ૧ ચક્ર પૂર્ણ!</strong><br><br>તમે <strong>૧૦૮ વાર</strong> રામ નામ લખ્યું છે.",
+        "milestone-1008": "✨ <strong>ભક્તિ સાધના: ૧,૦૦૮ નામો!</strong><br><br>તમે <strong>૧,૦૦૮ વાર</strong> રામ નામ લખ્યું છે.",
+        "milestone-target": "🏆 <strong>સાધના લક્ષ્ય પ્રાપ્ત!</strong><br><br>અભિનંદન! તમારું <strong>{target}</strong> નામોનું લક્ષ્ય પૂરું થયું છે.",
+        "page-indicator": "પાનું {current} / {total}",
+        "pdf-title": "દેવનામ સાધના પુસ્તક",
+        "pdf-total": "કુલ લખેલા પવિત્ર નામો",
+        "pdf-status": "સ્થિતિ",
+        "pdf-completed": "લક્ષ્ય પૂર્ણ થયું",
+        "pdf-date": "સંકલનની તારીખ",
+        "pdf-stamp": "ધ્યાનપૂર્વક સાધના પૂર્ણ",
+        "pdf-page-header": "દેવનામ સાધના હસ્તપ્રત",
+        "pdf-page": "પાનું",
+        "pdf-page-footer": "કુલ લખેલા: {count} | ભક્તિપૂર્વક અર્પણ"
+    },
+    malayalam: {
+        "landing-title": "ദേവനാമ",
+        "landing-subtitle": "DevaNama",
+        "landing-desc": "നിങ്ങളുടെ സാധനാ പുസ്തകം വ്യക്തിഗതമാക്കാനും പുരോഗതി ട്രാക്ക് ചെയ്യാനും നിങ്ങളുടെ ആത്മീയ നാമം നൽകുക.",
+        "label-login-name": "ആത്മീയ നാമം",
+        "label-login-email": "ഇമെയിൽ വിലാസം",
+        "label-login-avatar": "അവതാരം തിരഞ്ഞെടുക്കുക",
+        "label-login-lang": "ഭാഷ തിരഞ്ഞെടുക്കുക",
+        "btn-login-submit": "സാധനാ മേഖലയിലേക്ക് പ്രവേശിക്കുക",
+        "btn-google-login": "ഗൂഗിൾ ഉപയോഗിച്ച് തുടരുക",
+        "brand-name": "ദേവനാമ",
+        "brand-name-sub": "DevaNama",
+        "mobile-menu-toggle": "⚙️ ക്രമീകരണങ്ങൾ",
+        "btn-login-trigger": "🔐 സാധകൻ ലോഗിൻ",
+        "settings-title": "സാധനാ ക്രമീകരണങ്ങൾ",
+        "label-name-template": "നാമ / മന്ത്ര മാതൃക",
+        "label-script-lang": "ലിപിയും ഭാഷയും",
+        "label-writing-target": "ലക്ഷ്യം",
+        "label-input-mode": "എഴുത്ത് രീതി",
+        "sewa-title": "🌸 ദേവനാമ സേവ",
+        "sewa-desc": "പരസ്യരഹിത സാധന നിലനിർത്താൻ ഞങ്ങളെ സഹായിക്കുക.",
+        "btn-donate-trigger": "🙏 സംഭാവന ചെയ്യുക",
+        "diya-label": "ധ്യാന ജ്വാല",
+        "stat-total-written": "ആകെ എഴുതിയത്",
+        "stat-total-desc": "എല്ലാ സെഷനുകളിലുമായി",
+        "stat-target-goal": "ലക്ഷ്യം",
+        "stat-pages-filled": "പൂർത്തിയായ പേജുകൾ",
+        "stat-daily-streak": "ദിനചര്യ",
+        "stat-streak-desc": "തുടർച്ചയായ എഴുത്ത്",
+        "btn-export-pdf": "📄 പുസ്തകം ഡൗൺലോഡ് ചെയ്യുക",
+        "btn-reset-data": "🔄 പുരോഗതി പുനഃക്രമീകരിക്കുക",
+        "notebook-title": "📓 പവിത്ര ലിഖിത ഗ്രിഡ്",
+        "history-title": "📜 സാധനാ ചരിത്രം",
+        "certificate-title": "ലക്ഷ്യം കൈവരിച്ചു",
+        "btn-modal-close": "അനുഗ്രഹം സ്വീകരിക്കുക",
+        "donation-title": "🌸 സേവ ചെയ്യുക",
+        "donation-desc": "ദേവനാമ പൂർണ്ണമായും സ്വമേധയാ ഉള്ള സേവനത്തെ ആശ്രയിച്ചാണ് പ്രവർത്തിക്കുന്നത്.",
+        "qr-instructions": "GPay, PhonePe വഴി സ്കാൻ ചെയ്ത് സംഭാവന നൽകുക.",
+        "btn-submit-donation": "കാർഡ്/പേപാൽ വഴി തുടരുക",
+        "tap-btn-native": "എഴുതുക",
+        "tap-btn-sub": "Write",
+        "input-placeholder": "ഇവിടെ ക്ലിക്ക് ചെയ്ത് എഴുതാൻ ആരംഭിക്കുക...",
+        "spelling-placeholder": "അല്ലെങ്കിൽ അക്ഷരങ്ങൾ ടൈപ്പ് ചെയ്യുക: ",
+        "spelling-instruction": "നാമം എഴുതാൻ <span class=\"accent-word\" id=\"word-target-guide\">{letters}</span> അക്ഷരങ്ങൾ ടൈപ്പ് ചെയ്യുക",
+        "bell-on": "🔔 മണിനാദം: ഓൺ",
+        "bell-off": "🔔 മണിനാദം: ഓഫ്",
+        "tanpura-on": "🪕 തംബുരു: ഓൺ",
+        "tanpura-off": "🪕 തംബുരു: ഓഫ്",
+        "percent-completed": "{percent}% പൂർത്തിയായി",
+        "names-on-page": "നിലവിലെ പേജിൽ {count} / {capacity} നാമങ്ങൾ",
+        "streak-days": "{streak} ദിവസങ്ങൾ",
+        "streak-day": "{streak} ദിവസം",
+        "no-sessions": "എഴുത്ത് സെഷനുകളൊന്നും ഇതുവരെ രേഖപ്പെടുത്തിയിട്ടില്ല.",
+        "history-item-count": "{count} നാമങ്ങൾ",
+        "reset-confirm": "എഴുതിയ നാമങ്ങൾ മായ്ച്ച് പുരോഗതി റീസെറ്റ് ചെയ്യണോ? ഇത് വീണ്ടെടുക്കാൻ കഴിയില്ല.",
+        "reset-success": "പുരോഗതി വിജയകരമായി മായ്ച്ചു.",
+        "logout-confirm": "ലോഗ് ഔട്ട് ചെയ്യണോ? നിങ്ങളുടെ പുരോഗതി സുരക്ഷിതമായിരിക്കും.",
+        "welcome-msg": "🌸 സ്വാഗതം, <strong>{name}</strong>!<br><br>നിങ്ങളുടെ സാധനാ ഇടം സജ്ജമാണ്. സാധന തുടരുക.",
+        "level-title": "ലെവൽ {level}: {title}",
+        "level-names": { 1: "സാധകൻ", 2: "മുനി", 3: "യോഗി", 4: "ഋഷി" },
+        "milestone-108": "💐 <strong>മൈൽസ്റ്റോൺ: 1 റൗണ്ട് പൂർത്തിയായി!</strong><br><br>നിങ്ങൾ <strong>108 തവണ</strong> രാമ നാമം എഴുതി കഴിഞ്ഞു.",
+        "milestone-1008": "✨ <strong>ഭക്തി സാധന: 1,008 നാമങ്ങൾ!</strong><br><br>നിങ്ങൾ <strong>1,008 തവണ</strong> രാമ നാമം എഴുതി കഴിഞ്ഞു.",
+        "milestone-target": "🏆 <strong>സാധനാ ലക്ഷ്യം പൂർത്തിയായി!</strong><br><br>അഭിനന്ദനങ്ങൾ! നിങ്ങളുടെ <strong>{target}</strong> നാമങ്ങളുടെ ലക്ഷ്യം കൈവരിച്ചു.",
+        "page-indicator": "പേജ് {current} / {total}",
+        "pdf-title": "ദേവനാമ സാധനാ പുസ്തകം",
+        "pdf-total": "ആകെ എഴുതിയ പവിത്ര നാമങ്ങൾ",
+        "pdf-status": "നില",
+        "pdf-completed": "ലക്ഷ്യം കൈവരിച്ചു",
+        "pdf-date": "തയ്യാറാക്കിയ തീയതി",
+        "pdf-stamp": "മനസ്സർപ്പിച്ചു സാധന പൂർത്തിയാക്കി",
+        "pdf-page-header": "ദേവനാമ സാധനാ കൈയെഴുത്തുപ്രതി",
+        "pdf-page": "പേജ്",
+        "pdf-page-footer": "ആകെ എഴുതിയത്: {count} | ഭക്തിയോടെ സമർപ്പിച്ചത്"
+    },
+    odia: {
+        "landing-title": "ଦେବନାମ",
+        "landing-subtitle": "DevaNama",
+        "landing-desc": "ଆପଣଙ୍କର ସାଧନା ପୁସ୍ତକକୁ ବ୍ୟକ୍ତିଗତ କରିବା ଏବଂ ଜପ ଅଗ୍ରଗତି ଟ୍ରାକ୍ କରିବା ପାଇଁ ଆପଣଙ୍କର ଆଧ୍ୟାତ୍ମିକ ନାମ ପ୍ରବେଶ କରନ୍ତୁ ।",
+        "label-login-name": "ଆପଣଙ୍କ ଆଧ୍ୟାତ୍ମିକ ନାମ",
+        "label-login-email": "ଇମେଲ୍ ଠିକଣା",
+        "label-login-avatar": "ଅବତାର ଚିହ୍ନଟ ବାଛନ୍ତୁ",
+        "label-login-lang": "ଆପ୍ ଭାଷା ବାଛନ୍ତୁ",
+        "btn-login-submit": "ସାଧନା କ୍ଷେତ୍ରକୁ ପ୍ରବେଶ କରନ୍ତੁ",
+        "btn-google-login": "ଗୁଗଲ୍ ସହିତ ଜାରି ରଖନ୍ତୁ",
+        "brand-name": "ଦେବନାମ",
+        "brand-name-sub": "DevaNama",
+        "mobile-menu-toggle": "⚙️ ସେଟିଙ୍ગ୍ସ",
+        "btn-login-trigger": "🔐 ସାଧକ ଲଗଇନ୍",
+        "settings-title": "ସାଧନା ସେଟିଙ୍ଗ୍ସ",
+        "label-name-template": "ନାମ / ମନ୍ତ୍ର ଟେମ୍ପଲେଟ୍",
+        "label-script-lang": "ଲିପି ଏବଂ ଭାଷା",
+        "label-writing-target": "ଲକ୍ଷ୍ୟ",
+        "label-input-mode": "ଲେଖିବା ଶୈଳୀ",
+        "sewa-title": "🌸 ଦେବନାମ ସେବା",
+        "sewa-desc": "ବିଜ୍ଞାପନ-ମୁକ୍ତ ସାଧନା ବଜାୟ ରଖିବାରେ ସାହାଯ୍ୟ କରନ୍ତୁ ।",
+        "btn-donate-trigger": "🙏 ଦାନ କରନ୍ତୁ",
+        "diya-label": "ସଜାଗତାର ଦୀପ",
+        "stat-total-written": "ମୋଟ ଲିଖିତ",
+        "stat-total-desc": "ସମସ୍ତ ସେସନରେ",
+        "stat-target-goal": "ଲକ୍ଷ୍ୟ",
+        "stat-pages-filled": "ପୃଷ୍ଠା ପୂରଣ",
+        "stat-daily-streak": "ଦୈନିକ ସାଧନା",
+        "stat-streak-desc": "ନିରନ୍ତର ଲେଖା",
+        "btn-export-pdf": "📄 ପୁସ୍ତକ ଡାଉନଲୋଡ୍",
+        "btn-reset-data": "🔄 ପ୍ରଗତି ରିସେଟ୍",
+        "notebook-title": "📓 ପବିତ୍ର ପାଣ୍ଡୁଲିପି ଗ୍ରିଡ୍",
+        "history-title": "📜 ଦୈନିକ ସାଧନା ଲଗ୍",
+        "certificate-title": "ସାଧନା ଲକ୍ଷ୍ୟ ହାସଲ ହୋଇଛି",
+        "btn-modal-close": "ଆଶୀର୍ବାଦ ଗ୍ରହଣ କରନ୍ତୁ",
+        "donation-title": "🌸 ସେବା କରନ୍ତୁ",
+        "donation-desc": "ଦେବନାମ ସମ୍ପୂର୍ଣ୍ଣ ସ୍ୱେଚ୍ଛାସେବୀ ସେବା ଦ୍ୱାରା ପରିଚାଳିତ ।",
+        "qr-instructions": "ସାହାଯ୍ୟ କରିବା ପାଇଁ GPay କିମ୍ବା PhonePe ସ୍କାନ କରନ୍ତୁ ।",
+        "btn-submit-donation": "କାର୍ଡ/ପେପାଲ୍ ସହିତ ଆଗକୁ ବଢନ୍ତୁ",
+        "tap-btn-native": "ଲେଖନ୍ତୁ",
+        "tap-btn-sub": "Write",
+        "input-placeholder": "ଏଠାରେ କ୍ଲିକ୍ କରି ଲେଖିବା ଆରମ୍ଭ କରନ୍ତୁ...",
+        "spelling-placeholder": "କିମ୍ବା ଅକ୍ଷର ଟାଇପ୍ କରନ୍ତು: ",
+        "spelling-instruction": "ନାମ ଲେଖିବା ପାଇଁ <span class=\"accent-word\" id=\"word-target-guide\">{letters}</span> ଅକ୍ଷର ଟାଇପ୍ କରନ୍ତು",
+        "bell-on": "🔔 ଘଣ୍ଟି ଶବ୍ଦ: ଅନ୍",
+        "bell-off": "🔔 ଘଣ୍ଟି ଶବ୍ଦ: ଅଫ୍",
+        "tanpura-on": "🪕 ତାନପୁରା: ଅନ୍",
+        "tanpura-off": "🪕 ତାନପୁରା: ଅଫ୍",
+        "percent-completed": "{percent}% ସମ୍ପୂର୍ଣ୍ଣ",
+        "names-on-page": "ବର୍ତ୍ତମାନ ପୃଷ୍ଠାରେ {count} / {capacity} ନାମ",
+        "streak-days": "{streak} ଦିନ",
+        "streak-day": "{streak} ଦିନ",
+        "no-sessions": "ଏପର୍ଯ୍ୟନ୍ତ କୌଣସି ଲେଖା ରେକର୍ଡ ହୋଇନାହିଁ । ଲେଖିବା ଆରମ୍ଭ କରନ୍ତୁ ।",
+        "history-item-count": "{count} ନାମ",
+        "reset-confirm": "ସମସ୍ତ ନାମ ଡିଲିଟ୍ କରି ପ୍ରଗତି ରିସେଟ୍ କରିବାକୁ ଚାହାଁନ୍ତି କି? ଏହାକୁ ପରିବର୍ତ୍ତନ କରାଯାଇପାରିବ ନାହିଁ ।",
+        "reset-success": "ପ୍ରଗତି ସଫଳତାର ସହ ସଫା କରାଗଲା ।",
+        "logout-confirm": "ଲଗ୍ ଆଉଟ୍ କରିବାକୁ ଚାହାଁନ୍ତି କି? ଆପଣଙ୍କ ପ୍ରଗତି ସୁରକ୍ଷିତ ରହିବ ।",
+        "welcome-msg": "🌸 ସ୍ୱାଗତ, <strong>{name}</strong>!<br><br>ଆପଣଙ୍କ ସାଧନା ସ୍ଥାନ ସକ୍ରିୟ ହୋଇଛି । ସାଧନା ଜାରି ରଖନ୍ତୁ ।",
+        "level-title": "ସ୍ତର {level}: {title}",
+        "level-names": { 1: "ସାଧକ", 2: "ମୁନି", 3: "ଯୋଗୀ", 4: "ଋଷି" },
+        "milestone-108": "💐 <strong>ମାଇଲଷ୍ଟୋନ: ୧ ଚକ୍ର ପୂର୍ଣ୍ଣ!</strong><br><br>ଆପଣ ସଫଳତାର ସହ <strong>୧୦୮ ଥର</strong> ରାମ ନାମ ଲେଖିଛନ୍ତି ।",
+        "milestone-1008": "✨ <strong>ଭକ୍ତି ସାଧନା: ୧,୦୦୮ ନାମ!</strong><br><br>ଆପଣ ସଫଳତାର ସହ <strong>୧,୦୦୮ ଥର</strong> ରାମ ନାମ ଲେଖିଛନ୍ତି ।",
+        "milestone-target": "🏆 <strong>ସାଧନା ଲକ୍ଷ୍ୟ ପ୍ରାପ୍ତ!</strong><br><br>ଅଭିନନ୍ଦନ! ଆପଣଙ୍କର <strong>{target}</strong> ନାମର ଲକ୍ଷ୍ୟ ପୂରଣ ହୋଇଛି ।",
+        "page-indicator": "ପୃଷ୍ଠା {current} / {total}",
+        "pdf-title": "ଦେବନାମ ସାଧନା ପୁସ୍ତକ",
+        "pdf-total": "ମୋଟ ଲିଖିତ ପବିତ୍ର ନାମ",
+        "pdf-status": "ସ୍ଥିତି",
+        "pdf-completed": "ଲକ୍ଷ୍ୟ ପୂରଣ ହୋଇଛି",
+        "pdf-date": "ସଂକଳନ ତାରିଖ",
+        "pdf-stamp": "ଧ୍ୟାନପୂର୍ବକ ସାଧନା ସମ୍ପନ୍ନ",
+        "pdf-page-header": "ଦେବନାମ ସାଧନା ପାଣ୍ଡୁଲିପି",
+        "pdf-page": "ପୃଷ୍ଠା",
+        "pdf-page-footer": "ମୋଟ ଲିଖିତ: {count} | ଭକ୍ତିର ସହ ସମର୍ପିତ"
+    },
+    punjabi: {
+        "landing-title": "ਦੇਵਨਾਮ",
+        "landing-subtitle": "DevaNama",
+        "landing-desc": "ਆਪਣੀ ਸਾਧਨਾ ਪੁਸਤਕ ਨੂੰ ਨਿਜੀ ਬਣਾਉਣ ਅਤੇ ਆਪਣੀ ਜਪ ਪ੍ਰਗਤੀ ਨੂੰ ਟਰੈਕ ਕਰਨ ਲਈ ਆਪਣਾ ਅਧਿਆਤਮਿਕ ਨਾਮ ਦਰਜ ਕਰੋ।",
+        "label-login-name": "ਤੁਹਾਡਾ ਅਧਿਆਤਮਿਕ ਨਾਮ",
+        "label-login-email": "ਈਮੇਲ ਪਤਾ",
+        "label-login-avatar": "ਅਵਤਾਰ ਚੁਣੋ",
+        "label-login-lang": "ਐਪ ਦੀ ਭਾਸ਼ਾ ਚੁਣੋ",
+        "btn-login-submit": "ਸਾਧਨਾ ਖੇਤਰ ਵਿੱਚ ਪ੍ਰਵੇਸ਼ ਕਰੋ",
+        "btn-google-login": "ਗੂਗਲ ਨਾਲ ਜਾਰੀ ਰੱਖੋ",
+        "brand-name": "ਦੇਵਨਾਮ",
+        "brand-name-sub": "DevaNama",
+        "mobile-menu-toggle": "⚙️ ਸੈਟਿੰਗਾਂ",
+        "btn-login-trigger": "🔐 ਸਾਧਕ ਲੋਗਿਨ",
+        "settings-title": "ਸਾਧਨਾ ਸੈਟਿੰਗਾਂ",
+        "label-name-template": "ਨਾਮ / ਮੰਤਰ ਟੈਮਪਲੇਟ",
+        "label-script-lang": "ਲਿਪੀ ਅਤੇ ਭਾਸ਼ਾ",
+        "label-writing-target": "ਮੀਲ ਦਾ ਪੱਥਰ ਟੀਚਾ",
+        "label-input-mode": "ਲਿਖਣ ਦਾ ਮੋਡ",
+        "sewa-title": "🌸 ਦੇਵਨਾਮ ਸੇਵਾ",
+        "sewa-desc": "ਇਸ਼ਤਿਹਾਰ-ਮੁਕਤ ਸਾਧਨਾ ਲਈ ਸਾਡੀ ਸਹਾਇਤਾ ਕਰੋ।",
+        "btn-donate-trigger": "🙏 ਦਾਨ ਕਰੋ",
+        "diya-label": "ਸਚੇਤਤਾ ਦੀ ਲਾਟ",
+        "stat-total-written": "ਕੁੱਲ ਲਿਖਿਆ",
+        "stat-total-desc": "ਸਾਰੇ ਸੈਸ਼ਨਾਂ ਵਿੱਚ",
+        "stat-target-goal": "ਟੀਚਾ",
+        "stat-pages-filled": "ਭਰੇ ਹੋਏ ਪੰਨੇ",
+        "stat-daily-streak": "ਰੋਜ਼ਾਨਾ ਸਾਧਨਾ",
+        "stat-streak-desc": "ਲਗਾਤਾਰ ਲਿਖਣਾ",
+        "btn-export-pdf": "📄 ਪੁਸਤਕ ਡਾਊਨਲੋડ ਕਰੋ",
+        "btn-reset-data": "🔄 ਪ੍ਰਗਤੀ ਰੀਸੈਟ ਕਰੋ",
+        "notebook-title": "📓 ਪਵਿੱਤਰ ਹੱਥ-ਲਿਖਤ ਗਰਿੱਡ",
+        "history-title": "📜 ਰੋਜ਼ਾਨਾ ਸਾਧਨਾ ਲੌਗ",
+        "certificate-title": "ਸਾਧਨਾ ਟੀਚਾ ਪ੍ਰਾਪਤ ਹੋਇਆ",
+        "btn-modal-close": "ਆਸ਼ੀਰਵਾਦ ਸਵੀਕਾਰ ਕਰੋ",
+        "donation-title": "🌸 ਸੇਵਾ ਕਰੋ",
+        "donation-desc": "ਦੇਵਨਾਮ ਪੂਰੀ ਤਰ੍ਹਾਂ ਸਵੈ-ਇੱਛਤ ਸੇਵਾ 'ਤੇ ਚੱਲਦਾ ਹੈ।",
+        "qr-instructions": "ਸਹਾਇਤਾ ਕਰਨ ਲਈ GPay, PhonePe ਰਾਹੀਂ ਸਕੈਨ ਕਰੋ।",
+        "btn-submit-donation": "ਕਾਰਡ/ਪੇਪਾਲ ਨਾਲ ਅੱਗੇ ਵਧੋ",
+        "tap-btn-native": "ਲਿਖੋ",
+        "tap-btn-sub": "Write",
+        "input-placeholder": "ਇੱਥੇ ਕਲਿੱਕ ਕਰੋ ਅਤੇ ਲਿਖਣਾ ਸ਼ੁਰੂ ਕਰੋ...",
+        "spelling-placeholder": "ਜਾਂ ਅੱਖਰ ਟਾਈਪ ਕਰੋ: ",
+        "spelling-instruction": "ਨਾਮ ਲਿਖਣ ਲਈ <span class=\"accent-word\" id=\"word-target-guide\">{letters}</span> ਅੱਖਰ ਟਾਈਪ ਕਰੋ",
+        "bell-on": "🔔 ਘੰਟੀ ਦੀ ਆਵਾਜ਼: ਚਾਲੂ",
+        "bell-off": "🔔 ਘੰਟੀ ਦੀ ਆਵਾਜ਼: ਬੰਦ",
+        "tanpura-on": "🪕 ਤਾਨਪੁਰਾ: ਚਾਲੂ",
+        "tanpura-off": "🪕 ਤਾਨਪੁਰਾ: ਬੰਦ",
+        "percent-completed": "{percent}% ਪੂਰਾ ਹੋਇਆ",
+        "names-on-page": "ਮੌਜੂਦਾ ਪੰਨੇ 'ਤੇ {count} / {capacity} ਨਾਮ",
+        "streak-days": "{streak} ਦਿਨ",
+        "streak-day": "{streak} ਦਿਨ",
+        "no-sessions": "ਅਜੇ ਤੱਕ ਕੋਈ ਲਿਖਣ ਸੈਸ਼ਨ ਰਿਕਾਰਡ ਨਹੀਂ ਹੋਇਆ। ਲਿਖਣਾ ਸ਼ੁਰੂ ਕਰੋ।",
+        "history-item-count": "{count} ਨਾਮ",
+        "reset-confirm": "ਕੀ ਤੁਸੀਂ ਸਾਰੇ ਲਿਖੇ ਨਾਮਾਂ ਨੂੰ ਮਿਟਾ ਕੇ ਪ੍ਰਗਤੀ ਰੀਸੈਟ ਕਰਨਾ ਚਾਹੁੰਦੇ ਹੋ? ਇਹ ਵਾਪਸ ਨਹੀਂ ਲਿਆ ਜਾ ਸਕਦਾ।",
+        "reset-success": "ਪ੍ਰਗਤੀ ਸਫਲਤਾਪੂਰਵਕ ਸਾਫ਼ ਕਰ ਦਿੱਤੀ ਗਈ।",
+        "logout-confirm": "ਕੀ ਤੁਸੀਂ ਲੌਗ ਆਉਟ ਕਰਨਾ ਚਾਹੁੰਦੇ ਹੋ? ਤੁਹਾਡੀ ਪ੍ਰਗਤੀ ਸੁਰੱਖਿਅਤ ਰਹੇਗੀ।",
+        "welcome-msg": "🌸 ਸੁਆਗਤ ਹੈ, <strong>{name}</strong>!<br><br>ਤੁਹਾਡਾ ਸਾਧਨਾ ਖੇਤਰ ਸਰਗਰਮ ਹੈ। ਸਾਧਨਾ ਕਰਦੇ ਰਹੋ।",
+        "level-title": "ਪੱਧਰ {level}: {title}",
+        "level-names": { 1: "ਸਾਧਕ", 2: "ਮੁਨੀ", 3: "ਯੋਗੀ", 4: "ਰਿਸ਼ੀ" },
+        "milestone-108": "💐 <strong>ਮੀਲ ਪੱਥਰ: 1 ਚੱਕਰ ਪੂਰਾ!</strong><br><br>ਤੁਸੀਂ <strong>108 ਵਾਰ</strong> ਰਾਮ ਨਾਮ ਲਿਖ ਲਿਆ ਹੈ।",
+        "milestone-1008": "✨ <strong>ਭਗਤੀ ਸਾਧਨਾ: 1,008 ਨਾਮ!</strong><br><br>ਤੁਸੀਂ <strong>1,008 ਵਾਰ</strong> ਰਾਮ ਨਾਮ ਲਿਖ ਲਿਆ ਹੈ।",
+        "milestone-target": "🏆 <strong>ਸਾਧਨਾ ਟੀਚਾ ਪੂਰਾ!</strong><br><br>ਵਧਾਈਆਂ! ਤੁਹਾਡਾ <strong>{target}</strong> ਨਾਮਾਂ ਦਾ ਟੀਚา ਪੂਰਾ ਹੋ ਗਿਆ ਹੈ।",
+        "page-indicator": "ਪੰਨਾ {current} / {total}",
+        "pdf-title": "ਦੇਵਨਾਮ ਸਾਧਨਾ ਪੁਸਤਕ",
+        "pdf-total": "ਕੁੱਲ ਲਿਖੇ ਪਵਿੱਤਰ ਨਾਮ",
+        "pdf-status": "ਸਥਿਤੀ",
+        "pdf-completed": "ਟੀਚਾ ਪ੍ਰਾਪਤ ਹੋਇਆ",
+        "pdf-date": "ਸੰਕਲਨ ਦੀ ਮਿਤੀ",
+        "pdf-stamp": "ਸਚੇਤ ਸਾਧਨਾ ਪੂਰੀ ਹੋਈ",
+        "pdf-page-header": "ਦੇਵਨਾਮ ਸਾਧਨਾ ਹੱਥ-ਲਿਖਤ",
+        "pdf-page": "ਪੰਨਾ",
+        "pdf-page-footer": "ਕੁੱਲ ਲਿਖੇ: {count} | ਸ਼ਰਧਾਪੂਰਵਕ ਭੇਟ"
+    }
+};
+
 // --- Application State ---
 let state = {
     totalCount: 0,
@@ -270,7 +1013,7 @@ let state = {
     lastWriteDate: null, // YYYY-MM-DD
     history: {}, // { 'YYYY-MM-DD': count }
     currentTemplate: "Sri Rama",
-    currentScript: "devanagari",
+    currentScript: "english",
     inputMode: "tap", // "tap" or "spelling"
     isBellSoundOn: true,
     isAmbientOn: false,
@@ -281,6 +1024,30 @@ let state = {
         avatar: "🌸 Lotus"
     }
 };
+
+function translatePage() {
+    const dict = TRANSLATIONS[state.currentScript] || TRANSLATIONS["english"];
+    
+    // Scan all data-translate elements
+    const elements = document.querySelectorAll('[data-translate]');
+    elements.forEach(el => {
+        const key = el.getAttribute('data-translate');
+        if (dict[key]) {
+            if (el.tagName === 'INPUT') {
+                el.placeholder = dict[key];
+            } else {
+                if (key === 'welcome-msg' || key === 'sewa-desc' || key === 'donation-desc' || key === 'landing-desc' || key === 'qr-instructions') {
+                    el.innerHTML = dict[key];
+                } else {
+                    el.textContent = dict[key];
+                }
+            }
+        }
+    });
+
+    // Update title tags
+    document.title = state.currentScript === 'english' ? "Rama Koti - Digital Meditative Writing App" : "देवनाम - डिजिटल साधना लेखन ऐप";
+}
 
 // --- Spelling Input State ---
 let spellingProgressIndex = 0;
@@ -521,7 +1288,8 @@ function saveProgress() {
 }
 
 function resetProgress() {
-    if (confirm("Are you sure you want to delete all written names and reset your writing history? This action cannot be undone.")) {
+    const dict = TRANSLATIONS[state.currentScript] || TRANSLATIONS["english"];
+    if (confirm(dict["reset-confirm"])) {
         state.totalCount = 0;
         state.writtenNames = [];
         state.history = {};
@@ -529,7 +1297,7 @@ function resetProgress() {
         state.lastWriteDate = null;
         saveProgress();
         loadProgress();
-        showNotification("Progress cleared successfully.");
+        showNotification(dict["reset-success"]);
     }
 }
 
@@ -620,13 +1388,14 @@ function addWrittenName() {
 
 function checkMilestones() {
     const count = state.totalCount;
+    const dict = TRANSLATIONS[state.currentScript] || TRANSLATIONS["english"];
     // Check if achieved general targets
     if (count === 108) {
-        showNotification(`💐 <strong>Sadhana Milestone: 1 Round Completed!</strong><br><br>You have successfully written the divine name of Rama <strong>108 times</strong>. May your life be filled with peace, mindfulness, and strength.`);
+        showNotification(dict["milestone-108"]);
     } else if (count === 1008) {
-        showNotification(`✨ <strong>Great Devotion: 1,008 Names Written!</strong><br><br>Your dedication shines bright. You have completed <strong>1,008 Rama Namas</strong>, writing a beautiful chapter of calm and focus in your digital book.`);
+        showNotification(dict["milestone-1008"]);
     } else if (count === state.target) {
-        showNotification(`🏆 <strong>Sadhana Milestone Achieved!</strong><br><br>Congratulations! You have completed your goal of writing <strong>${state.target.toLocaleString()}</strong> names. Your determination and continuous meditation are highly blessed.`);
+        showNotification(dict["milestone-target"].replace("{target}", state.target.toLocaleString()));
     } else if (count % 1000 === 0 && count > 0) {
         // Minor sound or notification
         playTempleBell();
@@ -636,9 +1405,23 @@ function checkMilestones() {
 // Current page browsing index
 let currentPageIndex = 0;
 
+const LOCALES = {
+    english: 'en-US',
+    devanagari: 'hi-IN',
+    telugu: 'te-IN',
+    tamil: 'ta-IN',
+    kannada: 'kn-IN',
+    bengali: 'bn-IN',
+    gujarati: 'gu-IN',
+    malayalam: 'ml-IN',
+    odia: 'or-IN',
+    punjabi: 'pa-IN'
+};
+
 function renderNotebookPage() {
     const gridContainer = document.getElementById('notebook-grid-page');
     gridContainer.innerHTML = '';
+    const dict = TRANSLATIONS[state.currentScript] || TRANSLATIONS["english"];
 
     const totalPages = Math.max(1, Math.ceil(state.writtenNames.length / PAGE_CAPACITY));
     
@@ -671,7 +1454,10 @@ function renderNotebookPage() {
     }
 
     // Update Page Browser Indicator
-    document.getElementById('notebook-page-indicator').textContent = `Page ${currentPageIndex + 1} / ${totalPages}`;
+    const pageText = dict["page-indicator"]
+        .replace("{current}", currentPageIndex + 1)
+        .replace("{total}", totalPages);
+    document.getElementById('notebook-page-indicator').textContent = pageText;
     document.getElementById('btn-prev-page').disabled = (currentPageIndex === 0);
     document.getElementById('btn-next-page').disabled = (currentPageIndex >= totalPages - 1);
 }
@@ -679,20 +1465,22 @@ function renderNotebookPage() {
 function renderHistoryLog() {
     const historyContainer = document.getElementById('history-items-container');
     historyContainer.innerHTML = '';
+    const dict = TRANSLATIONS[state.currentScript] || TRANSLATIONS["english"];
 
     const sortedDates = Object.keys(state.history).sort((a, b) => new Date(b) - new Date(a));
 
     if (sortedDates.length === 0) {
         historyContainer.innerHTML = `
             <div class="history-item" style="border: none; justify-content: center; color: var(--text-muted);">
-                No writing sessions recorded yet. Start typing above to make history.
+                ${dict["no-sessions"]}
             </div>`;
         return;
     }
 
+    const locale = LOCALES[state.currentScript] || 'en-US';
     sortedDates.forEach(date => {
         const count = state.history[date];
-        const formattedDate = new Date(date).toLocaleDateString('en-US', {
+        const formattedDate = new Date(date).toLocaleDateString(locale, {
             weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
         });
 
@@ -700,13 +1488,18 @@ function renderHistoryLog() {
         item.className = 'history-item';
         item.innerHTML = `
             <span class="history-date">📅 ${formattedDate}</span>
-            <span class="history-count">${count} names</span>
+            <span class="history-count">${dict["history-item-count"].replace("{count}", count)}</span>
         `;
         historyContainer.appendChild(item);
     });
 }
 
 function syncUIElements() {
+    const dict = TRANSLATIONS[state.currentScript] || TRANSLATIONS["english"];
+
+    // Run basic page translation
+    translatePage();
+
     // Stats counters
     document.getElementById('stat-total-count').textContent = state.totalCount.toLocaleString();
     document.getElementById('stat-target').textContent = state.target.toLocaleString();
@@ -714,26 +1507,37 @@ function syncUIElements() {
     // Page Ratio
     const currentPageNamesCount = state.writtenNames.length % PAGE_CAPACITY;
     document.getElementById('stat-pages').textContent = Math.floor(state.writtenNames.length / PAGE_CAPACITY);
-    document.getElementById('stat-page-ratio').textContent = `${currentPageNamesCount} / ${PAGE_CAPACITY} names on current page`;
+    
+    const pageRatioText = dict["names-on-page"]
+        .replace("{count}", currentPageNamesCount)
+        .replace("{capacity}", PAGE_CAPACITY);
+    document.getElementById('stat-page-ratio').textContent = pageRatioText;
 
     // Target Progress percentage
     const progressPercent = Math.min(100, Math.floor((state.totalCount / state.target) * 100));
-    document.getElementById('stat-target-progress').textContent = `${progressPercent}% completed`;
+    const progressText = dict["percent-completed"].replace("{percent}", progressPercent);
+    document.getElementById('stat-target-progress').textContent = progressText;
 
     // Streak
-    document.getElementById('stat-streak').textContent = `${state.streak} ${state.streak === 1 ? 'day' : 'days'}`;
+    const streakKey = state.streak === 1 ? "streak-day" : "streak-days";
+    const streakText = dict[streakKey].replace("{streak}", state.streak);
+    document.getElementById('stat-streak').textContent = streakText;
 
     // Select boxes sync
     document.getElementById('name-template').value = state.currentTemplate;
     document.getElementById('script-lang').value = state.currentScript;
+    const loginLangEl = document.getElementById('login-lang');
+    if (loginLangEl) loginLangEl.value = state.currentScript;
     document.getElementById('writing-target').value = state.target;
     document.getElementById('input-mode').value = state.inputMode;
 
     // Sound Toggles UI
-    document.getElementById('sound-bell-toggle').textContent = `🔔 Sound FX: ${state.isBellSoundOn ? 'On' : 'Off'}`;
+    const bellText = state.isBellSoundOn ? dict["bell-on"] : dict["bell-off"];
+    document.getElementById('sound-bell-toggle').textContent = bellText;
     document.getElementById('sound-bell-toggle').className = state.isBellSoundOn ? 'control-btn active' : 'control-btn';
     
-    document.getElementById('ambient-audio-toggle').textContent = `🪕 Tanpura: ${state.isAmbientOn ? 'On' : 'Off'}`;
+    const tanpuraText = state.isAmbientOn ? dict["tanpura-on"] : dict["tanpura-off"];
+    document.getElementById('ambient-audio-toggle').textContent = tanpuraText;
     document.getElementById('ambient-audio-toggle').className = state.isAmbientOn ? 'control-btn active' : 'control-btn';
 
     // Main header title translation
@@ -783,6 +1587,7 @@ function updateUserProfileUI() {
     const profileSection = document.getElementById('user-profile-section');
     const landingPage = document.getElementById('landing-page');
     const appContainer = document.querySelector('.app-container');
+    const dict = TRANSLATIONS[state.currentScript] || TRANSLATIONS["english"];
 
     if (state.profile && state.profile.loggedIn) {
         if (landingPage) landingPage.style.display = 'none';
@@ -790,13 +1595,18 @@ function updateUserProfileUI() {
 
         if (profileSection) {
             const lvlInfo = getSadhakaLevelInfo(state.totalCount);
+            const levelNames = dict["level-names"] || TRANSLATIONS["english"]["level-names"];
+            const lvlTitle = levelNames[lvlInfo.level] || lvlInfo.title;
+            const levelText = dict["level-title"]
+                .replace("{level}", lvlInfo.level)
+                .replace("{title}", lvlTitle);
             const avatarEmoji = state.profile.avatar ? state.profile.avatar.split(' ')[0] : '\uD83C\uDF38';
             profileSection.innerHTML = `
                 <div class="profile-info-container">
                     <div class="profile-avatar-circle">${avatarEmoji}</div>
                     <div class="profile-sadhaka-name">${escapeHTML(state.profile.name)}</div>
-                    <div class="profile-sadhaka-level">Level ${lvlInfo.level}: ${lvlInfo.title}</div>
-                    <button class="btn-profile-logout" id="btn-logout-trigger">\uD83D\uDEAA Logout</button>
+                    <div class="profile-sadhaka-level">${levelText}</div>
+                    <button class="btn-profile-logout" id="btn-logout-trigger">${dict["btn-logout-trigger"]}</button>
                 </div>
             `;
             const logoutBtn = document.getElementById('btn-logout-trigger');
@@ -823,11 +1633,14 @@ function handleLoginSubmit(e) {
 
     saveProgress();
     updateUserProfileUI();
-    showNotification(`\uD83C\uDF38 Welcome, <strong>${escapeHTML(state.profile.name)}</strong>!<br><br>Your personalized sadhana space is now active. Keep writing to elevate your level.`);
+    const dict = TRANSLATIONS[state.currentScript] || TRANSLATIONS["english"];
+    const welcomeMsg = dict["welcome-msg"].replace("{name}", escapeHTML(state.profile.name));
+    showNotification(welcomeMsg);
 }
 
 function handleLogout() {
-    if (confirm("Are you sure you want to log out? Your writing progress will remain saved locally.")) {
+    const dict = TRANSLATIONS[state.currentScript] || TRANSLATIONS["english"];
+    if (confirm(dict["logout-confirm"])) {
         state.profile = {
             loggedIn: false,
             name: "",
@@ -905,10 +1718,14 @@ function setupDonationListeners() {
 function setupSpellingProgressUI() {
     const letters = SPELLING_ARRAYS[state.currentTemplate] || ["R", "A", "M", "A"];
     const syllables = CLICKABLE_SYLLABLES[state.currentTemplate][state.currentScript] || letters;
+    const dict = TRANSLATIONS[state.currentScript] || TRANSLATIONS["english"];
     
     // Update top text guide
     const targetTextString = letters.join(" - ");
-    document.getElementById('word-target-guide').textContent = targetTextString;
+    const instructionsText = document.getElementById('instructions-text');
+    if (instructionsText) {
+        instructionsText.innerHTML = dict["spelling-instruction"].replace("{letters}", targetTextString);
+    }
 
     // Populate the graphical spelling keyboard guides (clickable buttons!)
     const keysContainer = document.getElementById('spelling-guide-keys');
@@ -929,7 +1746,7 @@ function setupSpellingProgressUI() {
 
     const inputField = document.getElementById('keyboard-input');
     inputField.value = letters.slice(0, spellingProgressIndex).join("");
-    inputField.placeholder = `Or type letters: ${letters.join("")}`;
+    inputField.placeholder = `${dict["spelling-placeholder"]}${letters.join("")}`;
 }
 
 // Handle Syllable Button Clicks (Click and Select)
@@ -1012,6 +1829,7 @@ function handleSpellingInput(e) {
 function exportPrasadBook() {
     const printWindow = window.open('', '_blank');
     const nameStr = getActiveFormattedName();
+    const dict = TRANSLATIONS[state.currentScript] || TRANSLATIONS["english"];
     
     // Create grids for printable pages
     let pagesHtml = '';
@@ -1040,14 +1858,14 @@ function exportPrasadBook() {
         pagesHtml += `
             <div class="print-page">
                 <div class="print-page-header">
-                    <span>DevaNama Sadhana Manuscript</span>
-                    <span>Page ${p + 1}</span>
+                    <span>${dict["pdf-page-header"]}</span>
+                    <span>${dict["pdf-page"]} ${p + 1}</span>
                 </div>
                 <div class="print-grid">
                     ${gridCells}
                 </div>
                 <div class="print-page-footer">
-                    Total Written: ${state.totalCount} | Completed with Devotion
+                    ${dict["pdf-page-footer"].replace("{count}", state.totalCount)}
                 </div>
             </div>
         `;
@@ -1058,7 +1876,7 @@ function exportPrasadBook() {
         <html lang="en">
         <head>
             <meta charset="UTF-8">
-            <title>My DevaNama Prasad Book</title>
+            <title>${dict["pdf-title"]}</title>
             <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Yatra+One&family=Outfit:wght@400;600&display=swap">
             <style>
                 * { box-sizing: border-box; }
@@ -1177,12 +1995,12 @@ function exportPrasadBook() {
         <body>
             <div class="cover-page">
                 <div class="cover-logo">${nameStr}</div>
-                <h1 class="cover-title">DevaNama Sadhana Book</h1>
-                <div class="cover-detail">Total Divine Names Written: <strong>${state.totalCount.toLocaleString()}</strong></div>
-                <div class="cover-detail">Status: Completed Milestone (${state.target.toLocaleString()})</div>
-                <div class="cover-detail">Date of Compilation: ${new Date().toLocaleDateString()}</div>
+                <h1 class="cover-title">${dict["pdf-title"]}</h1>
+                <div class="cover-detail">${dict["pdf-total"]}: <strong>${state.totalCount.toLocaleString()}</strong></div>
+                <div class="cover-detail">${dict["pdf-status"]}: ${dict["pdf-completed"]} (${state.target.toLocaleString()})</div>
+                <div class="cover-detail">${dict["pdf-date"]}: ${new Date().toLocaleDateString(LOCALES[state.currentScript] || 'en-US')}</div>
                 <div class="cover-stamp">
-                     Mindful Practice Accomplished
+                     ${dict["pdf-stamp"]}
                 </div>
             </div>
             
@@ -1216,14 +2034,25 @@ document.addEventListener('DOMContentLoaded', () => {
         renderNotebookPage();
     });
 
-    document.getElementById('script-lang').addEventListener('change', (e) => {
-        state.currentScript = e.target.value;
+    const handleScriptChange = (val) => {
+        state.currentScript = val;
         spellingProgressIndex = 0; // reset typing progress
         clickSpellingIndex = 0; // reset click progress
         saveProgress();
         syncUIElements();
         renderNotebookPage();
+    };
+
+    document.getElementById('script-lang').addEventListener('change', (e) => {
+        handleScriptChange(e.target.value);
     });
+
+    const loginLangEl = document.getElementById('login-lang');
+    if (loginLangEl) {
+        loginLangEl.addEventListener('change', (e) => {
+            handleScriptChange(e.target.value);
+        });
+    }
 
     document.getElementById('writing-target').addEventListener('change', (e) => {
         state.target = parseInt(e.target.value);
