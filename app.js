@@ -1,3 +1,19 @@
+// --- Supabase Cloud Database Configuration ---
+// TO SETUP SUPABASE:
+// 1. Create a project at https://supabase.com
+// 2. Paste your project's URL and API Anon Key below
+const SUPABASE_URL = ""; 
+const SUPABASE_ANON_KEY = "";
+
+let supabase = null;
+if (SUPABASE_URL && SUPABASE_ANON_KEY) {
+    try {
+        supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+    } catch (e) {
+        console.error("Failed to initialize Supabase client:", e);
+    }
+}
+
 // --- Global Dictionaries and Mappings ---
 const SCRIPT_DICTIONARY = {
     "Sri Rama": {
@@ -270,7 +286,7 @@ const TRANSLATIONS = {
         "label-login-email": "Email Address",
         "label-login-avatar": "Select Avatar Icon",
         "label-login-lang": "Select App Language",
-        "btn-login-submit": "Enter Sadhana Space",
+        "btn-login-submit": "Log In",
         "btn-google-login": "Continue with Google",
         "brand-name": "देवनाम",
         "brand-name-sub": "DevaNama",
@@ -334,7 +350,18 @@ const TRANSLATIONS = {
         "pdf-stamp": "Mindful Practice Accomplished",
         "pdf-page-header": "DevaNama Sadhana Manuscript",
         "pdf-page": "Page",
-        "pdf-page-footer": "Total Written: {count} | Completed with Devotion"
+        "pdf-page-footer": "Total Written: {count} | Completed with Devotion",
+        "label-password": "Password",
+        "label-confirm-password": "Confirm Password",
+        "btn-signup-submit": "Create Account & Enter",
+        "prompt-no-account": "Don't have an account?",
+        "link-signup": "Sign Up",
+        "prompt-have-account": "Already have an account?",
+        "link-login": "Login",
+        "err-wrong-password": "❌ Incorrect credentials or password!",
+        "err-password-mismatch": "❌ Passwords do not match!",
+        "err-general": "❌ An error occurred. Please try again.",
+        "msg-connecting": "Connecting to Cloud Database..."
     },
     devanagari: {
         "landing-title": "देवनाम",
@@ -344,7 +371,7 @@ const TRANSLATIONS = {
         "label-login-email": "ईमेल पता",
         "label-login-avatar": "अवतार आइकन चुनें",
         "label-login-lang": "ऐप की भाषा चुनें",
-        "btn-login-submit": "साधना क्षेत्र में प्रवेश करें",
+        "btn-login-submit": "लॉग इन करें",
         "btn-google-login": "गूगल के साथ जारी रखें",
         "brand-name": "देवनाम",
         "brand-name-sub": "देवनाम",
@@ -408,7 +435,18 @@ const TRANSLATIONS = {
         "pdf-stamp": "सजय साधना संपन्न",
         "pdf-page-header": "देवनाम साधना पाण्डुलिपि",
         "pdf-page": "पृष्ठ",
-        "pdf-page-footer": "कुल लिखित: {count} | श्रद्धापूर्वक संपन्न"
+        "pdf-page-footer": "कुल लिखित: {count} | श्रद्धापूर्वक संपन्न",
+        "label-password": "पासवर्ड",
+        "label-confirm-password": "पासवर्ड की पुष्टि करें",
+        "btn-signup-submit": "खाता बनाएं और प्रवेश करें",
+        "prompt-no-account": "खाता नहीं है?",
+        "link-signup": "साइन अप करें",
+        "prompt-have-account": "पहले से खाता है?",
+        "link-login": "लॉगिन करें",
+        "err-wrong-password": "❌ गलत क्रेडेंशियल या पासवर्ड!",
+        "err-password-mismatch": "❌ पासवर्ड मेल नहीं खाते!",
+        "err-general": "❌ एक त्रुटि हुई। कृपया पुनः प्रयास करें।",
+        "msg-connecting": "क्लाउड डेटाबेस से जुड़ रहा है..."
     },
     telugu: {
         "landing-title": "దేవనామ",
@@ -418,7 +456,7 @@ const TRANSLATIONS = {
         "label-login-email": "ఈమెయిల్ చిరునామా",
         "label-login-avatar": "అవతార్ చిహ్నాన్ని ఎంచుకోండి",
         "label-login-lang": "యాప్ భాషను ఎంచుకోండి",
-        "btn-login-submit": "సాధనా స్థలంలోకి ప్రవేశించండి",
+        "btn-login-submit": "లాగిన్ అవ్వండి",
         "btn-google-login": "గూగుల్ తో కొనసాగించండి",
         "brand-name": "దేవనామ",
         "brand-name-sub": "DevaNama",
@@ -482,7 +520,18 @@ const TRANSLATIONS = {
         "pdf-stamp": "ధ్యాన సాధన పూర్తయింది",
         "pdf-page-header": "దేవనామ సాధన గ్రంథం",
         "pdf-page": "పేజీ",
-        "pdf-page-footer": "మొత్తం రాసినవి: {count} | భక్తితో సమర్పించబడింది"
+        "pdf-page-footer": "మొత్తం రాసినవి: {count} | భక్తితో సమర్పించబడింది",
+        "label-password": "పాస్‍వర్డ్",
+        "label-confirm-password": "పాస్‍వర్డ్‍ను నిర్ధారించండి",
+        "btn-signup-submit": "ఖాతాను సృష్టించి ప్రవేశించండి",
+        "prompt-no-account": "ఖాతా లేదా?",
+        "link-signup": "సైన్ అప్ చేయండి",
+        "prompt-have-account": "ఇప్పటికే ఖాతా ఉందా?",
+        "link-login": "లాగిన్",
+        "err-wrong-password": "❌ తప్పుడు ఆధారాలు లేదా పాస్‍వర్డ్!",
+        "err-password-mismatch": "❌ పాస్‍వర్డ్‍లు సరిపోలడం లేదు!",
+        "err-general": "❌ ఏదో లోపం జరిగింది. మళ్ళీ ప్రయత్నించండి.",
+        "msg-connecting": "క్లౌడ్ డేటాబేస్కు కనెక్ట్ అవుతోంది..."
     },
     tamil: {
         "landing-title": "தேவநாமா",
@@ -492,7 +541,7 @@ const TRANSLATIONS = {
         "label-login-email": "மின்னஞ்சல் முகவரி",
         "label-login-avatar": "அவதாரத்தை தேர்வு செய்யவும்",
         "label-login-lang": "மொழியை தேர்வு செய்யவும்",
-        "btn-login-submit": "சாதன பகுதிக்குள் நுழையவும்",
+        "btn-login-submit": "உள்நுழைக",
         "btn-google-login": "கூகிள் மூலம் தொடரவும்",
         "brand-name": "தேவநாமா",
         "brand-name-sub": "DevaNama",
@@ -556,7 +605,18 @@ const TRANSLATIONS = {
         "pdf-stamp": "மன அமைதியுடன் சாதன முடிந்தது",
         "pdf-page-header": "தேவநாமா சாதன ஏடு",
         "pdf-page": "பக்கம்",
-        "pdf-page-footer": "மொத்தம் எழுதியவை: {count} | பக்தியுடன் சமர்ப்பிக்கப்பட்டது"
+        "pdf-page-footer": "மொத்தம் எழுதியவை: {count} | பக்தியுடன் சமர்ப்பிக்கப்பட்டது",
+        "label-password": "கடவுச்சொல்",
+        "label-confirm-password": "கடவுச்சொல்லை உறுதிப்படுத்தவும்",
+        "btn-signup-submit": "கணக்கை உருவாக்கி உள்ளிடவும்",
+        "prompt-no-account": "கணக்கு இல்லையா?",
+        "link-signup": "பதிவு செய்க",
+        "prompt-have-account": "ஏற்கனவே கணக்கு உள்ளதா?",
+        "link-login": "உள்நுழைக",
+        "err-wrong-password": "❌ தவறான சான்றுகள் அல்லது கடவுச்சொல்!",
+        "err-password-mismatch": "❌ கடவுச்சொற்கள் பொருந்தவில்லை!",
+        "err-general": "❌ ஒரு பிழை ஏற்பட்டது. மீண்டும் முயற்சிக்கவும்.",
+        "msg-connecting": "கிளவுட் தரவுത്തளத்துடன் இണைகிறது..."
     },
     kannada: {
         "landing-title": "ದೇವನಾಮ",
@@ -566,7 +626,7 @@ const TRANSLATIONS = {
         "label-login-email": "ಇಮೇಲ್ ವಿಳಾಸ",
         "label-login-avatar": "ಅವತಾರವನ್ನು ಆರಿಸಿ",
         "label-login-lang": "ಭಾಷೆಯನ್ನು ಆರಿಸಿ",
-        "btn-login-submit": "ಸಾಧನಾ ಸ್ಥಳಕ್ಕೆ ಪ್ರವೇಶಿಸಿ",
+        "btn-login-submit": "ಲಾಗಿൻ ಮಾಡಿ",
         "btn-google-login": "ಗೂಗಲ್ ಮೂಲಕ ಮುಂದುವರಿಯಿರಿ",
         "brand-name": "ದೇವನಾಮ",
         "brand-name-sub": "DevaNama",
@@ -630,7 +690,18 @@ const TRANSLATIONS = {
         "pdf-stamp": "ಧ್ಯಾನ ಸಾಧನೆ ಪೂರ್ಣಗೊಂಡಿದೆ",
         "pdf-page-header": "ದೇವನಾಮ ಸಾಧನಾ ಹಸ್ತಪ್ರತಿ",
         "pdf-page": "ಪುಟ",
-        "pdf-page-footer": "ಒಟ್ಟು ಬರೆದದ್ದು: {count} | ಭಕ್ತಿಯಿಂದ ಸಮರ್ಪಿಸಲಾಗಿದೆ"
+        "pdf-page-footer": "ಒಟ್ಟು ಬರೆದದ್ದು: {count} | ಭಕ್ತಿಯಿಂದ ಸಮರ್ಪಿಸಲಾಗಿದೆ",
+        "label-password": "ಪಾಸ್‍ವರ್ಡ್",
+        "label-confirm-password": "ಪಾಸ್‍ವರ್ಡ್ ದೃಢೀಕರಿಸಿ",
+        "btn-signup-submit": "ಖಾತೆ ರಚಿಸಿ ಪ್ರವೇಶಿಸಿ",
+        "prompt-no-account": "ಖಾತೆ ಇಲ್ಲವೇ?",
+        "link-signup": "ಸೈನ್ ಅಪ್ ಮಾಡಿ",
+        "prompt-have-account": "ಈಗಾಗಲೇ ಖಾತೆ ಇದೆಯೇ?",
+        "link-login": "ಲಾಗಿನ್",
+        "err-wrong-password": "❌ തപ്പു രുജുവാതുಗಳು ಅಥವಾ ಪಾಸ್‍ವರ್ಡ್!",
+        "err-password-mismatch": "❌ ಪಾಸ್‍ವರ್ಡ್‍ಗಳು ಹೊಂದಿಕೆಯಾಗುತ್ತಿಲ್ಲ!",
+        "err-general": "❌ ದೋಷ ಸಂಭವಿಸಿದೆ. ದಯವಿಟ್ಟು ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.",
+        "msg-connecting": "ಕ್ಲೌಡ್ ಡೇಟಾಬೇಸ್‌ಗೆ ಸಂಪರ್കಿಸಲಾಗುತ್ತಿದೆ..."
     },
     bengali: {
         "landing-title": "দেবনাম",
@@ -640,7 +711,7 @@ const TRANSLATIONS = {
         "label-login-email": "ইমেল ঠিকানা",
         "label-login-avatar": "অবতার আইকন নির্বাচন করুন",
         "label-login-lang": "অ্যাপের ভাষা নির্বাচন করুন",
-        "btn-login-submit": "সাধনা ক্ষেত্রে প্রবেশ করুন",
+        "btn-login-submit": "লগ ইন করুন",
         "btn-google-login": "গুগল এর সাথে চালিয়ে যান",
         "brand-name": "দেবনাম",
         "brand-name-sub": "DevaNama",
@@ -704,7 +775,18 @@ const TRANSLATIONS = {
         "pdf-stamp": "মনোযোগ সহ সাধনা সম্পন্ন",
         "pdf-page-header": "দেবনাম সাধনা পাণ্ডুলিপি",
         "pdf-page": "পৃষ্ঠা",
-        "pdf-page-footer": "মোট লিখিত: {count} | ভক্তিভরে সমর্পিত"
+        "pdf-page-footer": "মোট লিখিত: {count} | ভক্তিভরে সমর্পিত",
+        "label-password": "পাসওয়ার্ড",
+        "label-confirm-password": "পাসওয়ার্ড নিশ্চিত করুন",
+        "btn-signup-submit": "অ্যাকাউন্ট তৈরি করে প্রবেশ করুন",
+        "prompt-no-account": "অ্যাকাউন্ট নেই?",
+        "link-signup": "সাইন আপ করুন",
+        "prompt-have-account": "ইতিমধ্যে অ্যাকাউন্ট আছে?",
+        "link-login": "লগইন করুন",
+        "err-wrong-password": "❌ ভুল শংসাপত্র বা পাসওয়ার্ড!",
+        "err-password-mismatch": "❌ পাসওয়ার্ড মিলছে না!",
+        "err-general": "❌ একটি ত্রুটি ঘটেছে। আবার চেষ্টা করুন।",
+        "msg-connecting": "ক্লাউড ডেটাবেসের সাথে সংযুক্ত হচ্ছে..."
     },
     gujarati: {
         "landing-title": "દેવનામ",
@@ -714,7 +796,7 @@ const TRANSLATIONS = {
         "label-login-email": "ઇમેઇલ સરનામું",
         "label-login-avatar": "અવતાર ચિહ્ન પસંદ કરો",
         "label-login-lang": "એપની ભાષા પસંદ કરો",
-        "btn-login-submit": "સાધના સ્થાનમાં પ્રવેશ કરો",
+        "btn-login-submit": "લોગ ઇન કરો",
         "btn-google-login": "ગૂગલ સાથે ચાલુ રાખો",
         "brand-name": "દેવનામ",
         "brand-name-sub": "DevaNama",
@@ -778,7 +860,18 @@ const TRANSLATIONS = {
         "pdf-stamp": "ધ્યાનપૂર્વક સાધના પૂર્ણ",
         "pdf-page-header": "દેવનામ સાધના હસ્તપ્રત",
         "pdf-page": "પાનું",
-        "pdf-page-footer": "કુલ લખેલા: {count} | ભક્તિપૂર્વક અર્પણ"
+        "pdf-page-footer": "કુલ લખેલા: {count} | ભક્તિપૂર્વક અર્પણ",
+        "label-password": "પાસવર્ડ",
+        "label-confirm-password": "પાસવર્ડની પુષ્ટિ કરો",
+        "btn-signup-submit": "ખાતું બનાવો અને પ્રવેશ કરો",
+        "prompt-no-account": "ખાતું નથી?",
+        "link-signup": "સાઇન અપ કરો",
+        "prompt-have-account": "પહેલાથી ખાતું છે?",
+        "link-login": "લોગિન કરો",
+        "err-wrong-password": "❌ ખોટા ઓળખપત્રો અથવા પાસવર્ડ!",
+        "err-password-mismatch": "❌ પાસવર્ડ મેળ ખાતા નથી!",
+        "err-general": "❌ ભૂલ આવી. કૃપા કરીને ફરી પ્રયાસ કરો.",
+        "msg-connecting": "ક્લાઉડ ડેટાબેઝ સાથે જોડાઈ રહ્યું છે..."
     },
     malayalam: {
         "landing-title": "ദേവനാമ",
@@ -788,7 +881,7 @@ const TRANSLATIONS = {
         "label-login-email": "ഇമെയിൽ വിലാസം",
         "label-login-avatar": "അവതാരം തിരഞ്ഞെടുക്കുക",
         "label-login-lang": "ഭാഷ തിരഞ്ഞെടുക്കുക",
-        "btn-login-submit": "സാധനാ മേഖലയിലേക്ക് പ്രവേശിക്കുക",
+        "btn-login-submit": "ലോഗിൻ ചെയ്യുക",
         "btn-google-login": "ഗൂഗിൾ ഉപയോഗിച്ച് തുടരുക",
         "brand-name": "ദേവനാമ",
         "brand-name-sub": "DevaNama",
@@ -852,7 +945,18 @@ const TRANSLATIONS = {
         "pdf-stamp": "മനസ്സർപ്പിച്ചു സാധന പൂർത്തിയാക്കി",
         "pdf-page-header": "ദേവനാമ സാധനാ കൈയെഴുത്തുപ്രതി",
         "pdf-page": "പേജ്",
-        "pdf-page-footer": "ആകെ എഴുതിയത്: {count} | ഭക്തിയോടെ സമർപ്പിച്ചത്"
+        "pdf-page-footer": "ആകെ എഴുതിയത്: {count} | ഭക്തിയോടെ സമർപ്പിച്ചത്",
+        "label-password": "പാസ്‌വേഡ്",
+        "label-confirm-password": "പാസ്‌വേഡ് സ്ഥിരീകരിക്കുക",
+        "btn-signup-submit": "അക്കൗണ്ട് സൃഷ്ടിച്ച് പ്രവേശിക്കുക",
+        "prompt-no-account": "അക്കൗണ്ട് ഇല്ലേ?",
+        "link-signup": "സൈൻ അപ്പ് ചെയ്യുക",
+        "prompt-have-account": "ഇതിനകം അക്കൗണ്ട് ഉണ്ടോ?",
+        "link-login": "ലോഗിൻ",
+        "err-wrong-password": "❌ തെറ്റായ ക്രെഡൻഷ്യലുകൾ അല്ലെങ്കിൽ പാസ്‌വേഡ്!",
+        "err-password-mismatch": "❌ പാസ്‌വേഡുകൾ പൊരുത്തപ്പെടുന്നില്ല!",
+        "err-general": "❌ ഒരു പിശക് സംഭവിച്ചു. വീണ്ടും ശ്രമിക്കുക.",
+        "msg-connecting": "ക്ലൗഡ് ഡാറ്റാബേസിലേക്ക് ബന്ധിപ്പിക്കുന്നു..."
     },
     odia: {
         "landing-title": "ଦେବନାମ",
@@ -862,7 +966,7 @@ const TRANSLATIONS = {
         "label-login-email": "ଇମେଲ୍ ଠିକଣା",
         "label-login-avatar": "ଅବତାର ଚିହ୍ନଟ ବାଛନ୍ତୁ",
         "label-login-lang": "ଆପ୍ ଭାଷା ବାଛନ୍ତୁ",
-        "btn-login-submit": "ସାଧନା କ୍ଷେତ୍ରକୁ ପ୍ରବେଶ କରନ୍ତੁ",
+        "btn-login-submit": "ଲଗ୍ ଇନ୍ କରନ୍ତୁ",
         "btn-google-login": "ଗୁଗଲ୍ ସହିତ ଜାରି ରଖନ୍ତୁ",
         "brand-name": "ଦେବନାମ",
         "brand-name-sub": "DevaNama",
@@ -926,7 +1030,18 @@ const TRANSLATIONS = {
         "pdf-stamp": "ଧ୍ୟାନପୂର୍ବକ ସାଧନା ସମ୍ପନ୍ନ",
         "pdf-page-header": "ଦେବନାମ ସାଧନା ପାଣ୍ଡୁଲିପି",
         "pdf-page": "ପୃଷ୍ଠା",
-        "pdf-page-footer": "ମୋଟ ଲିଖିତ: {count} | ଭକ୍ତିର ସହ ସମର୍ପିତ"
+        "pdf-page-footer": "ମୋଟ ଲିଖିତ: {count} | ଭକ୍ତିର ସହ ସମର୍ପିତ",
+        "label-password": "ପାସୱାର୍ଡ",
+        "label-confirm-password": "ପାସୱାର୍ଡ ନିଶ୍ଚିତ କରନ୍ତୁ",
+        "btn-signup-submit": "ଖାତା ତିଆରି କରି ପ୍ରବେଶ କରନ୍ତୁ",
+        "prompt-no-account": "ଖାତା ନାହିଁ କି?",
+        "link-signup": "ସାଇନ୍ ଅପ୍ କରନ୍ତୁ",
+        "prompt-have-account": "ପୂର୍ବରု ଖାତା ଅଛି କି?",
+        "link-login": "ଲଗ୍‌ଇନ୍",
+        "err-wrong-password": "❌ ଭୁଲ୍ ପ୍ରମାଣପତ୍ର କିମ୍ବା ପାସୱାର୍ଡ!",
+        "err-password-mismatch": "❌ ପାସୱାର୍ଡ ମେଳ ଖାଉନାହିଁ!",
+        "err-general": "❌ ଏକ ତ୍ରୁଟି ଘଟିଲା | ଦୟାକରି ପୁଣਿ ଚେଷ୍ଟာ କରନ୍ତು |",
+        "msg-connecting": "କ୍ଲାଉଡ୍ ଡାଟାବେସ୍ ସହିତ ସଂଯੋਗ ହେଉଛି..."
     },
     punjabi: {
         "landing-title": "ਦੇਵਨਾਮ",
@@ -936,7 +1051,7 @@ const TRANSLATIONS = {
         "label-login-email": "ਈਮੇਲ ਪਤਾ",
         "label-login-avatar": "ਅਵਤਾਰ ਚੁਣੋ",
         "label-login-lang": "ਐਪ ਦੀ ਭਾਸ਼ਾ ਚੁਣੋ",
-        "btn-login-submit": "ਸਾਧਨਾ ਖੇਤਰ ਵਿੱਚ ਪ੍ਰਵੇਸ਼ ਕਰੋ",
+        "btn-login-submit": "ਲੌਗ ਇਨ ਕਰੋ",
         "btn-google-login": "ਗੂਗਲ ਨਾਲ ਜਾਰੀ ਰੱਖੋ",
         "brand-name": "ਦੇਵਨਾਮ",
         "brand-name-sub": "DevaNama",
@@ -1000,7 +1115,18 @@ const TRANSLATIONS = {
         "pdf-stamp": "ਸਚੇਤ ਸਾਧਨਾ ਪੂਰੀ ਹੋਈ",
         "pdf-page-header": "ਦੇਵਨਾਮ ਸਾਧਨਾ ਹੱਥ-ਲਿਖਤ",
         "pdf-page": "ਪੰਨਾ",
-        "pdf-page-footer": "ਕੁੱਲ ਲਿਖੇ: {count} | ਸ਼ਰਧਾਪੂਰਵਕ ਭੇਟ"
+        "pdf-page-footer": "ਕੁੱਲ ਲਿਖੇ: {count} | ਸ਼ਰਧਾਪੂਰਵਕ ਭੇਟ",
+        "label-password": "ਪਾਸਵਰਡ",
+        "label-confirm-password": "ਪਾਸਵਰਡ ਦੀ ਪੁਸ਼ਟੀ ਕਰੋ",
+        "btn-signup-submit": "ਖਾਤਾ ਬਣਾਓ ਅਤੇ ਦਾਖਲ ਹੋਵੋ",
+        "prompt-no-account": "ਖਾਤਾ ਨਹੀਂ ਹੈ?",
+        "link-signup": "ਸਾਈਨ ਅੱਪ ਕਰੋ",
+        "prompt-have-account": "ਪਹਿਲਾਂ ਹੀ ਖਾਤਾ ਹੈ?",
+        "link-login": "ਲੌਗਇਨ",
+        "err-wrong-password": "❌ ਗਲਤ ਪ੍ਰਮਾਣ ਪੱਤਰ ਜਾਂ ਪਾਸਵਰਡ!",
+        "err-password-mismatch": "❌ ਪਾਸਵਰਡ ਮੇਲ ਨਹੀਂ ਖਾਂਦੇ!",
+        "err-general": "❌ ਕੋਈ ਗਲਤੀ ਹੋਈ ਹੈ। ਕਿਰਪਾ ਕਰਕੇ ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕਰੋ।",
+        "msg-connecting": "ਕਲਾਊਡ ਡੇਟਾਬੇਸ ਨਾਲ ਕਨੈਕਟ ਕੀਤਾ ਜਾ ਰਿਹਾ ਹੈ..."
     }
 };
 
@@ -1283,11 +1409,41 @@ function loadProgress() {
     renderHistoryLog();
 }
 
-function saveProgress() {
+async function saveProgress() {
     localStorage.setItem('rama_koti_state', JSON.stringify(state));
+    
+    if (supabase) {
+        try {
+            const { data: { session } } = await supabase.auth.getSession();
+            if (session && session.user) {
+                const progressUpdate = {
+                    total_count: state.totalCount,
+                    target: state.target,
+                    written_names: state.writtenNames,
+                    streak: state.streak,
+                    last_write_date: state.lastWriteDate,
+                    history: state.history,
+                    current_template: state.currentTemplate,
+                    input_mode: state.inputMode,
+                    is_bell_sound_on: state.isBellSoundOn,
+                    is_ambient_on: state.isAmbientOn,
+                    updated_at: new Date().toISOString()
+                };
+                const { error } = await supabase
+                    .from('sadhana_progress')
+                    .update(progressUpdate)
+                    .eq('user_id', session.user.id);
+                if (error) {
+                    console.error("Failed to sync progress to Supabase:", error);
+                }
+            }
+        } catch (e) {
+            console.error("Error in saveProgress:", e);
+        }
+    }
 }
 
-function resetProgress() {
+async function resetProgress() {
     const dict = TRANSLATIONS[state.currentScript] || TRANSLATIONS["english"];
     if (confirm(dict["reset-confirm"])) {
         state.totalCount = 0;
@@ -1295,7 +1451,7 @@ function resetProgress() {
         state.history = {};
         state.streak = 0;
         state.lastWriteDate = null;
-        saveProgress();
+        await saveProgress();
         loadProgress();
         showNotification(dict["reset-success"]);
     }
@@ -1618,37 +1774,182 @@ function updateUserProfileUI() {
     }
 }
 
-function handleLoginSubmit(e) {
-    e.preventDefault();
-    const nameVal = document.getElementById('login-name').value.trim();
-    const emailVal = document.getElementById('login-email').value.trim();
-    const avatarVal = document.getElementById('login-avatar').value;
-
-    state.profile = {
-        loggedIn: true,
-        name: nameVal || "Anonymous Sadhaka",
-        email: emailVal || "",
-        avatar: avatarVal || "\uD83C\uDF38 Lotus"
-    };
-
-    saveProgress();
-    updateUserProfileUI();
-    const dict = TRANSLATIONS[state.currentScript] || TRANSLATIONS["english"];
-    const welcomeMsg = dict["welcome-msg"].replace("{name}", escapeHTML(state.profile.name));
-    showNotification(welcomeMsg);
+function toggleAuthCard(mode) {
+    const loginBox = document.getElementById('login-box');
+    const signupBox = document.getElementById('signup-box');
+    if (mode === 'signup') {
+        if (loginBox) loginBox.style.display = 'none';
+        if (signupBox) signupBox.style.display = 'block';
+    } else {
+        if (loginBox) loginBox.style.display = 'block';
+        if (signupBox) signupBox.style.display = 'none';
+    }
 }
 
-function handleLogout() {
+async function handleLoginSubmit(e) {
+    e.preventDefault();
+    const emailVal = document.getElementById('login-email').value.trim();
+    const passwordVal = document.getElementById('login-password').value;
+    const errorMsgEl = document.getElementById('login-error-msg');
+    
+    if (errorMsgEl) errorMsgEl.style.display = 'none';
+    
+    const dict = TRANSLATIONS[state.currentScript] || TRANSLATIONS["english"];
+    
+    if (!supabase) {
+        if (errorMsgEl) {
+            errorMsgEl.textContent = "Please configure SUPABASE_URL and SUPABASE_ANON_KEY in app.js";
+            errorMsgEl.style.display = 'block';
+        }
+        return;
+    }
+    
+    const submitBtn = e.target.querySelector('button[type="submit"]');
+    const originalText = submitBtn ? submitBtn.textContent : '';
+    if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = dict["msg-connecting"] || "Connecting...";
+    }
+    
+    try {
+        const { data, error } = await supabase.auth.signInWithPassword({
+            email: emailVal,
+            password: passwordVal
+        });
+        
+        if (error) {
+            if (errorMsgEl) {
+                if (error.status === 400) {
+                    errorMsgEl.textContent = dict["err-wrong-password"] || "❌ Incorrect credentials!";
+                } else {
+                    errorMsgEl.textContent = error.message;
+                }
+                errorMsgEl.style.display = 'block';
+            }
+        } else {
+            const welcomeName = data.user.user_metadata.display_name || "Sadhaka";
+            const welcomeMsg = (dict["welcome-msg"] || "Welcome, {name}!").replace("{name}", escapeHTML(welcomeName));
+            showNotification(welcomeMsg);
+        }
+    } catch (err) {
+        if (errorMsgEl) {
+            errorMsgEl.textContent = dict["err-general"] || "❌ An error occurred.";
+            errorMsgEl.style.display = 'block';
+        }
+    } finally {
+        if (submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.textContent = originalText;
+        }
+    }
+}
+
+async function handleSignupSubmit(e) {
+    e.preventDefault();
+    const nameVal = document.getElementById('signup-name').value.trim();
+    const emailVal = document.getElementById('signup-email').value.trim();
+    const avatarVal = document.getElementById('signup-avatar').value;
+    const langVal = document.getElementById('login-lang').value;
+    const passwordVal = document.getElementById('signup-password').value;
+    const confirmPasswordVal = document.getElementById('signup-confirm-password').value;
+    const errorMsgEl = document.getElementById('signup-error-msg');
+    
+    if (errorMsgEl) errorMsgEl.style.display = 'none';
+    
+    const dict = TRANSLATIONS[state.currentScript] || TRANSLATIONS["english"];
+    
+    if (passwordVal !== confirmPasswordVal) {
+        if (errorMsgEl) {
+            errorMsgEl.textContent = dict["err-password-mismatch"] || "❌ Passwords do not match!";
+            errorMsgEl.style.display = 'block';
+        }
+        return;
+    }
+    
+    if (!supabase) {
+        if (errorMsgEl) {
+            errorMsgEl.textContent = "Please configure SUPABASE_URL and SUPABASE_ANON_KEY in app.js";
+            errorMsgEl.style.display = 'block';
+        }
+        return;
+    }
+    
+    const submitBtn = e.target.querySelector('button[type="submit"]');
+    const originalText = submitBtn ? submitBtn.textContent : '';
+    if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = dict["msg-connecting"] || "Connecting...";
+    }
+    
+    try {
+        const { data, error } = await supabase.auth.signUp({
+            email: emailVal,
+            password: passwordVal,
+            options: {
+                data: {
+                    display_name: nameVal,
+                    avatar: avatarVal,
+                    language: langVal
+                }
+            }
+        });
+        
+        if (error) {
+            if (errorMsgEl) {
+                errorMsgEl.textContent = error.message;
+                errorMsgEl.style.display = 'block';
+            }
+        } else {
+            const welcomeName = nameVal || "Sadhaka";
+            const welcomeMsg = (dict["welcome-msg"] || "Welcome, {name}!").replace("{name}", escapeHTML(welcomeName));
+            showNotification(welcomeMsg);
+            
+            if (!data.session) {
+                showNotification("Please check your email to confirm registration, then log in.");
+                toggleAuthCard('login');
+            }
+        }
+    } catch (err) {
+        if (errorMsgEl) {
+            errorMsgEl.textContent = dict["err-general"] || "❌ An error occurred.";
+            errorMsgEl.style.display = 'block';
+        }
+    } finally {
+        if (submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.textContent = originalText;
+        }
+    }
+}
+
+async function handleLogout() {
     const dict = TRANSLATIONS[state.currentScript] || TRANSLATIONS["english"];
     if (confirm(dict["logout-confirm"])) {
+        if (supabase) {
+            try {
+                await supabase.auth.signOut();
+            } catch (e) {
+                console.error("Error signing out:", e);
+            }
+        }
         state.profile = {
             loggedIn: false,
             name: "",
             email: "",
-            avatar: "\uD83C\uDF38 Lotus"
+            avatar: "🌸 Lotus"
         };
-        saveProgress();
+        // Reset local progress on logout
+        state.totalCount = 0;
+        state.writtenNames = [];
+        state.streak = 0;
+        state.lastWriteDate = null;
+        state.history = {};
+        
+        await saveProgress();
         updateUserProfileUI();
+        syncUIElements();
+        renderNotebookPage();
+        renderHistoryLog();
     }
 }
 
@@ -2022,7 +2323,83 @@ function exportPrasadBook() {
 // --- DOM Event Listeners Setup ---
 
 document.addEventListener('DOMContentLoaded', () => {
-    loadProgress();
+    if (supabase) {
+        supabase.auth.onAuthStateChange(async (event, session) => {
+            if (session && session.user) {
+                const user = session.user;
+                state.profile = {
+                    loggedIn: true,
+                    name: user.user_metadata.display_name || "Sadhaka",
+                    email: user.email,
+                    avatar: user.user_metadata.avatar || "🌸 Lotus"
+                };
+                
+                // Fetch progress from database
+                const { data, error } = await supabase
+                    .from('sadhana_progress')
+                    .select('*')
+                    .eq('user_id', user.id)
+                    .maybeSingle();
+                    
+                if (error) {
+                    console.error("Error fetching sadhana progress from Supabase:", error);
+                } else if (data) {
+                    state.totalCount = data.total_count;
+                    state.target = data.target;
+                    state.writtenNames = data.written_names || [];
+                    state.streak = data.streak;
+                    state.lastWriteDate = data.last_write_date;
+                    state.history = data.history || {};
+                    state.currentTemplate = data.current_template;
+                    state.inputMode = data.input_mode;
+                    state.isBellSoundOn = data.is_bell_sound_on;
+                    state.isAmbientOn = data.is_ambient_on;
+                    if (user.user_metadata.language) {
+                        state.currentScript = user.user_metadata.language;
+                    }
+                } else {
+                    // Create default progress in database
+                    const defaultProgress = {
+                        user_id: user.id,
+                        total_count: 0,
+                        target: 10000,
+                        written_names: [],
+                        streak: 0,
+                        last_write_date: null,
+                        history: {},
+                        current_template: "Sri Rama",
+                        input_mode: "tap",
+                        is_bell_sound_on: true,
+                        is_ambient_on: false
+                    };
+                    const { error: insertError } = await supabase
+                        .from('sadhana_progress')
+                        .insert([defaultProgress]);
+                    if (insertError) {
+                        console.error("Error creating initial sadhana progress:", insertError);
+                    }
+                }
+                
+                updateUserProfileUI();
+                translatePage();
+                syncUIElements();
+                renderNotebookPage();
+                renderHistoryLog();
+            } else {
+                state.profile = {
+                    loggedIn: false,
+                    name: "",
+                    email: "",
+                    avatar: "🌸 Lotus"
+                };
+                updateUserProfileUI();
+                translatePage();
+                syncUIElements();
+            }
+        });
+    } else {
+        loadProgress();
+    }
 
     // 1. Inputs and Settings updates
     document.getElementById('name-template').addEventListener('change', (e) => {
@@ -2164,19 +2541,58 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('writing-target').addEventListener('change', closeMobileMenu);
     document.getElementById('input-mode').addEventListener('change', closeMobileMenu);
 
-    // DevaNama Login and Donation Event Bindings
+    // Setup toggle listeners for Login/Signup
+    const linkToSignup = document.getElementById('link-to-signup');
+    const linkToLogin = document.getElementById('link-to-login');
+    if (linkToSignup) {
+        linkToSignup.addEventListener('click', (e) => {
+            e.preventDefault();
+            toggleAuthCard('signup');
+        });
+    }
+    if (linkToLogin) {
+        linkToLogin.addEventListener('click', (e) => {
+            e.preventDefault();
+            toggleAuthCard('login');
+        });
+    }
+
+    // DevaNama Login and Signup Event Bindings
     const loginForm = document.getElementById('login-form');
     if (loginForm) {
         loginForm.addEventListener('submit', handleLoginSubmit);
     }
+    const signupForm = document.getElementById('signup-form');
+    if (signupForm) {
+        signupForm.addEventListener('submit', handleSignupSubmit);
+    }
     const googleMock = document.getElementById('btn-google-mock');
     if (googleMock) {
-        googleMock.addEventListener('click', () => {
-            document.getElementById('login-name').value = "Devanand";
-            document.getElementById('login-email').value = "devanand@gmail.com";
-            document.getElementById('login-avatar').value = "\u0950 Om"; // ॐ Om Symbol
-            const event = new Event('submit', { cancelable: true });
-            loginForm.dispatchEvent(event);
+        googleMock.addEventListener('click', async () => {
+            if (supabase) {
+                const { error } = await supabase.auth.signInWithOAuth({
+                    provider: 'google',
+                    options: {
+                        redirectTo: window.location.origin
+                    }
+                });
+                if (error) {
+                    showNotification("Google OAuth login error: " + error.message);
+                }
+            } else {
+                // Mock login for offline demonstration
+                state.profile = {
+                    loggedIn: true,
+                    name: "Devanand",
+                    email: "devanand@gmail.com",
+                    avatar: "ॐ Om"
+                };
+                saveProgress();
+                updateUserProfileUI();
+                const dict = TRANSLATIONS[state.currentScript] || TRANSLATIONS["english"];
+                const welcomeMsg = dict["welcome-msg"].replace("{name}", escapeHTML(state.profile.name));
+                showNotification(welcomeMsg);
+            }
         });
     }
     setupDonationListeners();
