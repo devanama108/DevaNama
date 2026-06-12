@@ -1162,6 +1162,326 @@ let state = {
     }
 };
 
+const OPTION_TRANSLATIONS = {
+    // optgroup labels
+    "Lord Rama": {
+        english: "Lord Rama",
+        devanagari: "भगवान राम",
+        telugu: "శ్రీరాముడు",
+        tamil: "இராமன்",
+        kannada: "ಶ್ರೀರಾಮ",
+        bengali: "ভগবান রাম",
+        gujarati: "ભગવાન રામ",
+        malayalam: "ശ്രീരാമൻ",
+        odia: "ଭଗବାନ ରାମ",
+        punjabi: "ਭਗਵਾਨ ਰਾਮ"
+    },
+    "Lord Shiva": {
+        english: "Lord Shiva",
+        devanagari: "भगवान शिव",
+        telugu: "శివుడు",
+        tamil: "சிவன்",
+        kannada: "ಶಿವ",
+        bengali: "ভগবান শিব",
+        gujarati: "ભગવાન શિવ",
+        malayalam: "ശിവൻ",
+        odia: "ଭଗବାନ ଶିବ",
+        punjabi: "ਭਗਵਾਨ ਸ਼ਿਵ"
+    },
+    "Lord Ganesha": {
+        english: "Lord Ganesha",
+        devanagari: "भगवान गणेश",
+        telugu: "వినాయకుడు",
+        tamil: "விநாயகர்",
+        kannada: "ಗಣೇಶ",
+        bengali: "ভগবান গণেশ",
+        gujarati: "ભગવાન ગણેશ",
+        malayalam: "ഗണപതി",
+        odia: "ଭଗବାନ ଗଣେଶ",
+        punjabi: "ਭਗਵਾਨ ਗਣੇਸ਼"
+    },
+    "Lord Krishna & Vishnu": {
+        english: "Lord Krishna & Vishnu",
+        devanagari: "भगवान कृष्ण और विष्णु",
+        telugu: "శ్రీకృష్ణుడు & విష్ణువు",
+        tamil: "கிருஷ்ணர் & விஷ்ணு",
+        kannada: "ಕೃಷ್ಣ ಮತ್ತು ವಿಷ್ಣು",
+        bengali: "ভগবান কৃষ্ণ ও বিষ্ণু",
+        gujarati: "ભગવાન કૃષ્ણ અને વિષ્ણુ",
+        malayalam: "ശ്രീകൃഷ്ണനും വിഷ്ണുവും",
+        odia: "ଭଗବାନ କୃଷ୍ଣ ଓ ବିଷ୍ଣୁ",
+        punjabi: "ਭਗਵਾਨ ਕ੍ਰਿਸ਼ਨ ਅਤੇ ਵਿਸ਼ਨੂੰ"
+    },
+    "Lord Hanuman": {
+        english: "Lord Hanuman",
+        devanagari: "भगवान हनुमान",
+        telugu: "హనుమంతుడు",
+        tamil: "அனுமன்",
+        kannada: "ಹनुమಂತ",
+        bengali: "ভগবান হনুমান",
+        gujarati: "ભગવાન હનુમાન",
+        malayalam: "ഹനുമാൻ",
+        odia: "ଭଗବାନ ହନୁମାନ",
+        punjabi: "ਭਗਵਾਨ ਹਨੂਮਾਨ"
+    },
+    // script languages
+    "devanagari": {
+        english: "Devanagari (Sanskrit/Hindi/Marathi)",
+        devanagari: "देवनागरी (संस्कृत/हिन्दी/मराठी)",
+        telugu: "దేవనాగరి (సంస్కృతం/హిందీ/మరాఠీ)",
+        tamil: "தேவநாகரி (சமஸ்கிருதம்/இந்தி/மராத்தி)",
+        kannada: "ದೇವನಾಗರಿ (ಸಂಸ್ಕೃತ/ಹಿಂದಿ/ಮರಾಠಿ)",
+        bengali: "দেবনাগরী (সংস্কৃত/হিন্দি/மারাঠি)",
+        gujarati: "દેવનાગરી (સંસ્કૃત/હિન્દી/મરાઠી)",
+        malayalam: "ദേവനാഗരി (സംസ്കൃതം/ഹിന്ദി/മറാഠി)",
+        odia: "ଦେବନାଗରୀ (ସଂସ୍କୃତ/ହିନ୍ଦୀ/ମରାଠୀ)",
+        punjabi: "ਦੇਵਨਾਗਰੀ (ਸੰਸਕ੍ਰਿਤ/ਹਿੰਦੀ/ਮਰਾਠੀ)"
+    },
+    "english": {
+        english: "Latin (English)",
+        devanagari: "लैटिन (अंग्रेजी)",
+        telugu: "లాటిన్ (ఇంగ్లీష్)",
+        tamil: "லத்தீன் (ஆங்கிலம்)",
+        kannada: "ಲ್ಯಾಟಿನ್ (ಇಂಗ್ಲಿಷ್)",
+        bengali: "ল্যাটিন (ইংরেজি)",
+        gujarati: "લેટિન (અંગ્રેજી)",
+        malayalam: "ലാറ്റിൻ (ഇംഗ്ലീష్)",
+        odia: "ଲାଟିନ୍ (ଇଂରାଜୀ)",
+        punjabi: "ਲੈਟਿਨ (ਅੰਗਰੇਜ਼ੀ)"
+    },
+    "telugu": {
+        english: "Telugu (తెలుగు)",
+        devanagari: "तेलुगु (తెలుగు)",
+        telugu: "తెలుగు (తెలుగు)",
+        tamil: "தெலுங்கு (తెలుగు)",
+        kannada: "ತೆಲುಗು (తెలుగు)",
+        bengali: "তেলுகు (తెలుగు)",
+        gujarati: "તેલુગુ (తెలుగు)",
+        malayalam: "തെലുങ്ക് (తెలుగు)",
+        odia: "ତେଲୁଗୁ (తెలుగు)",
+        punjabi: "ਤੇਲਗੂ (తెలుగు)"
+    },
+    "tamil": {
+        english: "Tamil (தமிழ்)",
+        devanagari: "तमिल (தமிழ்)",
+        telugu: "తమిళం (தமிழ்)",
+        tamil: "தமிழ் (தமிழ்)",
+        kannada: "ತಮಿಳು (தமிழ்)",
+        bengali: "তামিল (தமிழ்)",
+        gujarati: "તમિલ (தமிழ்)",
+        malayalam: "തമിഴ് (தமிழ்)",
+        odia: "ତାମିଲ୍ (தமிழ்)",
+        punjabi: "ਤਮਿਲ (தமிழ்)"
+    },
+    "kannada": {
+        english: "Kannada (ಕನ್ನಡ)",
+        devanagari: "कन्नड़ (ಕನ್ನಡ)",
+        telugu: "కన్నడ (ಕನ್ನಡ)",
+        tamil: "கன்னடம் (ಕನ್ನಡ)",
+        kannada: "ಕನ್ನಡ (ಕನ್ನಡ)",
+        bengali: "কন্নড় (ಕನ್ನಡ)",
+        gujarati: "કન્નડ (ಕನ್ನಡ)",
+        malayalam: "കന്നഡ (കನ್ನಡ)",
+        odia: "କନ୍ନଡ (ಕನ್ನಡ)",
+        punjabi: "ਕੰਨੜ (ਕੰਨੜ)"
+    },
+    "bengali": {
+        english: "Bengali (বাংলা)",
+        devanagari: "बंगाली (বাংলা)",
+        telugu: "బెంగాలీ (বাংলা)",
+        tamil: "பெங்காலி (বাংলা)",
+        kannada: "ಬೆಂಗಾಲಿ (বাংলা)",
+        bengali: "বাংলা (বাংলা)",
+        gujarati: "બંગાળી (বাংলা)",
+        malayalam: "ബംഗാളി (বাংলা)",
+        odia: "ବଙ୍ଗଳା (বাংলা)",
+        punjabi: "ਬੰਗਾਲੀ (বাংলা)"
+    },
+    "gujarati": {
+        english: "Gujarati (ગુજરાતી)",
+        devanagari: "Gujarati (ગુજરાતી)",
+        telugu: "గుజరాతీ (ગુજરાતી)",
+        tamil: "குજરાத்தி (ગુજરાતી)",
+        kannada: "ગુજરાતી (ગુજરાતી)",
+        bengali: "গুজরাটি (ગુજરાતી)",
+        gujarati: "ગુજરાતી (ગુજરાતી)",
+        malayalam: "ഗുജറാത്തി (ગુજરાത്തി)",
+        odia: "ଗୁଜରାଟୀ (ଗୁଜରାଟୀ)",
+        punjabi: "ਗੁਜਰਾਤੀ (ਗੁਜਰਾਤੀ)"
+    },
+    "malayalam": {
+        english: "Malayalam (മലയാളം)",
+        devanagari: "मलयालम (മലയാളം)",
+        telugu: "మలయాళం (മലയാളം)",
+        tamil: "മലയാളം (മലയാളം)",
+        kannada: "മലയാളം (മലയാളം)",
+        bengali: "মালয়ালাম (മലയാളം)",
+        gujarati: "મલયાલમ (മലയാളം)",
+        malayalam: "മലയാളം (മലയാളം)",
+        odia: "ମାଲାୟାଲମ୍ (മലയാളം)",
+        punjabi: "ਮਲਿਆਲਮ (മലയാളം)"
+    },
+    "odia": {
+        english: "Odia (ଓଡ଼ିଆ)",
+        devanagari: "ओड़िया (ଓଡ଼ିଆ)",
+        telugu: "ఒడియా (ଓଡ଼ିଆ)",
+        tamil: "ஒடியா (ଓଡ଼ିଆ)",
+        kannada: "ಒಡಿಯಾ (ଓଡ଼ିଆ)",
+        bengali: "ଓଡ଼ିଆ (ଓଡ଼ିଆ)",
+        gujarati: "ઓડિયા (ଓଡ଼ିଆ)",
+        malayalam: "ഒഡിയ (ଓଡ଼ିଆ)",
+        odia: "ଓଡ଼ିଆ (ଓଡ଼ିଆ)",
+        punjabi: "ਓਡੀਆ (ଓଡ଼ିଆ)"
+    },
+    "punjabi": {
+        english: "Punjabi (ਪੰਜਾਬੀ)",
+        devanagari: "पंजाबी (ਪੰਜਾਬੀ)",
+        telugu: "పంజాబీ (ਪੰਜਾਬੀ)",
+        tamil: "பஞ்சாபி (ਪੰਜਾਬੀ)",
+        kannada: "ਪಂಜಾಬಿ (ਪੰਜਾਬੀ)",
+        bengali: "পাঞ্জাবি (ਪੰਜਾਬੀ)",
+        gujarati: "ਪੰਜਾਬੀ (ਪੰਜਾਬੀ)",
+        malayalam: "ਪഞ്ചാਬੀ (ਪੰਜਾਬੀ)",
+        odia: "ପଞ୍ջାବୀ (ପੰਜਾਬੀ)",
+        punjabi: "ਪੰਜਾਬੀ (ਪੰਜਾਬੀ)"
+    },
+    // milestone targets
+    "108": {
+        english: "108 Names (1 Round)",
+        devanagari: "108 नाम (1 माला)",
+        telugu: "108 నామాలు (1 రౌండ్)",
+        tamil: "108 நாமங்கள் (1 சுற்று)",
+        kannada: "108 ನಾಮಗಳು (1 ಸುತ್ತು)",
+        bengali: "১০৮ নাম (১ রাউন্ড)",
+        gujarati: "108 નામ (1 માળા)",
+        malayalam: "108 നാമങ്ങൾ (1 റൗണ്ട്)",
+        odia: "108 ନାମ (1 ମାଳା)",
+        punjabi: "108 ਨਾਮ (1 ਮਾਲਾ)"
+    },
+    "1008": {
+        english: "1,008 Names",
+        devanagari: "1,008 नाम",
+        telugu: "1,008 నామాలు",
+        tamil: "1,008 நாமங்கள்",
+        kannada: "1,008 ನಾಮಗಳು",
+        bengali: "১,০০৮ নাম",
+        gujarati: "1,008 નામ",
+        malayalam: "1,008 നാമങ്ങൾ",
+        odia: "1,008 ନାମ",
+        punjabi: "1,008 ਨਾਮ"
+    },
+    "10000": {
+        english: "10,000 Names (Mini Koti)",
+        devanagari: "10,000 नाम (लघु कोटि)",
+        telugu: "10,000 నామాలు (లఘు కోటి)",
+        tamil: "10,000 நாமங்கள் (மினி கோட்டி)",
+        kannada: "10,000 ನಾಮಗಳು (ಕಿರು ಕೋಟಿ)",
+        bengali: "১০,০০০ নাম (মিনি কোটি)",
+        gujarati: "10,000 નામ (લઘુ કોટિ)",
+        malayalam: "10,000 നാമങ്ങൾ (മിനി കോടി)",
+        odia: "10,000 ନାମ (ମିନି କୋଟି)",
+        punjabi: "10,000 ਨਾਮ (मਿੰਨੀ ਕੋਟੀ)"
+    },
+    "100000": {
+        english: "100,000 Names (Lakh)",
+        devanagari: "100,000 नाम (लाख)",
+        telugu: "1,00,000 నామాలు (లక్ష)",
+        tamil: "100,000 நாமங்கள் (லட்சம்)",
+        kannada: "100,000 ನಾಮಗಳು (ಲಕ್ಷ)",
+        bengali: "১,০০,০০০ নাম (লক্ষ)",
+        gujarati: "100,000 નામ (લાખ)",
+        malayalam: "100,000 നാമങ്ങൾ (ലക്ഷം)",
+        odia: "100,000 ନାମ (ଲକ୍ଷ)",
+        punjabi: "100,000 ਨਾਮ (ਲੱਖ)"
+    },
+    "10000000": {
+        english: "10,000,000 (Rama Koti)",
+        devanagari: "10,000,000 (राम कोटि)",
+        telugu: "1,00,00,000 (రామ కోటి)",
+        tamil: "1,00,00,000 (ராம கோடி)",
+        kannada: "10,000,000 (ರಾಮ ಕೋಟಿ)",
+        bengali: "১,০০,০০,০০০ (রাম কোটি)",
+        gujarati: "10,000,000 (રામ કોટિ)",
+        malayalam: "1,00,00,000 (രാമ കോടി)",
+        odia: "10,000,000 (ରାମ କୋଟି)",
+        punjabi: "10,000,000 (ਰਾਮ ਕੋਟੀ)"
+    },
+    // input modes
+    "tap": {
+        english: "Meditative Tap (Space/Enter/Click)",
+        devanagari: "ध्यानपूर्वक टैप (स्पेस/एंटर/क्लिक)",
+        telugu: "ధ్యానపూర్వక ట్యాప్ (స్పేస్/ఎంటర్/క్లిక్)",
+        tamil: "தியான தட்டல் (ஸ்பேஸ்/என்டர்/கிளிக்)",
+        kannada: "ಧ್ಯಾನಪೂರ್ವಕ ಟ್ಯಾಪ್ (ಸ್ಪೇಸ್/ಎಂಟರ್/ಕ್ಲಿಕ್)",
+        bengali: "ধ্যানমগ্ন ট্যাপ (স্পেস/এন্টার/ক্লিক)",
+        gujarati: "ધ્યાનપૂર્વક ટેપ (સ્પેસ/એન્ટર/ક્લિક)",
+        malayalam: "ധ്യാനാത്മകമായ ടാപ്പ് (സ്പേസ്/എന്റർ/ക്ലിക്ക്)",
+        odia: "ଧ୍ୟାନପୂର୍ବକ ଟ୍ୟାପ୍ (ସ୍ପେସ୍/ଏଣ୍ଟର/କ୍ଲିକ୍)",
+        punjabi: "ਧਿਆਨ ਨਾਲ ਟੈਪ ਕਰੋ (ਸਪੇਸ/ਐਂਟਰ/ਕਲਿੱਕ)"
+    },
+    "spelling": {
+        english: "Spelling Chant (Type letters)",
+        devanagari: "वर्तनी जाप (अक्षर टाइप करें)",
+        telugu: "అక్షరాల జపం (టైప్ చేయండి)",
+        tamil: "எழுத்து உச்சரிப்பு (தட்டச்சு செய்க)",
+        kannada: "ಅಕ್ಷರಗಳ ಜಪ (ಟೈಪ್ ಮಾಡಿ)",
+        bengali: "বানান জপ (অক্ষর টাইপ করুন)",
+        gujarati: "જોડણી જાપ (અક્ષરો ટાઇપ કરો)",
+        malayalam: "അക്ഷര ജപം (അക്ഷരങ്ങൾ ടൈപ്പ് ചെയ്യുക)",
+        odia: "ବନାନ ଜପ (ଅକ୍ଷര ଟାଇପ୍ କରନ୍ତୁ)",
+        punjabi: "ਅੱਖਰ ਜਾਪ (ਅੱਖਰ ਟਾਈਪ ਕਰੋ)"
+    },
+    // avatars
+    "🌸 Lotus": {
+        english: "🌸 Sacred Lotus",
+        devanagari: "🌸 पवित्र कमल",
+        telugu: "🌸 పవిత్ర పద్మం",
+        tamil: "🌸 புனித தாமரை",
+        kannada: "🌸 ಪವಿತ್ರ ಕಮಲ",
+        bengali: "🌸 पवित्र पद्म",
+        gujarati: "🌸 પવિત્ર કમળ",
+        malayalam: "🌸 പവിത്ര താമര",
+        odia: "🌸 ପବିତ୍ର ପଦ୍ମ",
+        punjabi: "🌸 ਪਵਿੱਤਰ ਕਮਲ"
+    },
+    "🪔 Diya": {
+        english: "🪔 Glowing Diya",
+        devanagari: "🪔 जलता हुआ दीया",
+        telugu: "🪔 వెలిగే దీపం",
+        tamil: "🪔 ஒளिरும் அகல் விளக்கு",
+        kannada: "🪔 ಬೆಳಗುವ ದೀಪ",
+        bengali: "🪔 জ্বলন্ত প্রদীপ",
+        gujarati: "🪔 પ્રજ્વલિત દીવો",
+        malayalam: "🪔 തിളങ്ങുന്ന ദീപം",
+        odia: "🪔 ଜଳନ୍ତା ଦୀପ",
+        punjabi: "🪔 ਚਮਕਦਾ ਦੀਵਾ"
+    },
+    "ॐ Om": {
+        english: "ॐ Om Symbol",
+        devanagari: "ॐ ओम प्रतीक",
+        telugu: "ॐ ఓం చిహ్నం",
+        tamil: "ॐ ஓம் சின்னம்",
+        kannada: "ॐ ಓಂ ಚಿಹ್ನೆ",
+        bengali: "ॐ ওম प्रतीक",
+        gujarati: "ॐ ઓમ પ્રતીક",
+        malayalam: "ॐ ഓം ചിഹ്നം",
+        odia: "ॐ ଓଁ ପ୍ରତୀକ",
+        punjabi: "ॐ ਓਮ ਚਿੰਨ੍ਹ"
+    },
+    "📿 Mala": {
+        english: "📿 Chanting Mala",
+        devanagari: "📿 जप माला",
+        telugu: "📿 జప మాల",
+        tamil: "📿 ஜெப மாலை",
+        kannada: "📿 ಜಪ ಮಾಲೆ",
+        bengali: "📿 জপমালা",
+        gujarati: "📿 જાપ માળા",
+        malayalam: "📿 ജപമാല",
+        odia: "📿 ଜପ ମାଳି",
+        punjabi: "📿 ਜਾਪ ਮਾਲਾ"
+    }
+};
+
 function translatePage() {
     const dict = TRANSLATIONS[state.currentScript] || TRANSLATIONS["english"];
     
@@ -1181,6 +1501,90 @@ function translatePage() {
             }
         }
     });
+
+    // Translate all select dropdown options and optgroup labels
+    const lang = state.currentScript;
+    
+    // 1. Mantra Template dropdown (#name-template)
+    const nameTemplateSelect = document.getElementById('name-template');
+    if (nameTemplateSelect) {
+        // Optgroups
+        const optgroups = nameTemplateSelect.getElementsByTagName('optgroup');
+        for (let og of optgroups) {
+            let originalLabel = og.getAttribute('data-original');
+            if (!originalLabel) {
+                originalLabel = og.getAttribute('label');
+                og.setAttribute('data-original', originalLabel);
+            }
+            if (OPTION_TRANSLATIONS[originalLabel] && OPTION_TRANSLATIONS[originalLabel][lang]) {
+                og.label = OPTION_TRANSLATIONS[originalLabel][lang];
+            }
+        }
+        // Options
+        const options = nameTemplateSelect.getElementsByTagName('option');
+        for (let opt of options) {
+            const val = opt.value;
+            if (SCRIPT_DICTIONARY[val]) {
+                const localized = SCRIPT_DICTIONARY[val][lang] || SCRIPT_DICTIONARY[val]['english'];
+                const eng = SCRIPT_DICTIONARY[val]['english'];
+                if (lang === 'english') {
+                    opt.textContent = eng;
+                } else {
+                    opt.textContent = `${eng} / ${localized}`;
+                }
+            }
+        }
+    }
+
+    // 2. Script & Language dropdown (#script-lang) and landing page Language select (#login-lang)
+    ['script-lang', 'login-lang'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) {
+            const options = el.getElementsByTagName('option');
+            for (let opt of options) {
+                const val = opt.value;
+                if (OPTION_TRANSLATIONS[val] && OPTION_TRANSLATIONS[val][lang]) {
+                    opt.textContent = OPTION_TRANSLATIONS[val][lang];
+                }
+            }
+        }
+    });
+
+    // 3. Milestone Target dropdown (#writing-target)
+    const targetSelect = document.getElementById('writing-target');
+    if (targetSelect) {
+        const options = targetSelect.getElementsByTagName('option');
+        for (let opt of options) {
+            const val = opt.value;
+            if (OPTION_TRANSLATIONS[val] && OPTION_TRANSLATIONS[val][lang]) {
+                opt.textContent = OPTION_TRANSLATIONS[val][lang];
+            }
+        }
+    }
+
+    // 4. Writing Mode dropdown (#input-mode)
+    const modeSelect = document.getElementById('input-mode');
+    if (modeSelect) {
+        const options = modeSelect.getElementsByTagName('option');
+        for (let opt of options) {
+            const val = opt.value;
+            if (OPTION_TRANSLATIONS[val] && OPTION_TRANSLATIONS[val][lang]) {
+                opt.textContent = OPTION_TRANSLATIONS[val][lang];
+            }
+        }
+    }
+
+    // 5. Signup Avatar dropdown (#signup-avatar)
+    const avatarSelect = document.getElementById('signup-avatar');
+    if (avatarSelect) {
+        const options = avatarSelect.getElementsByTagName('option');
+        for (let opt of options) {
+            const val = opt.value;
+            if (OPTION_TRANSLATIONS[val] && OPTION_TRANSLATIONS[val][lang]) {
+                opt.textContent = OPTION_TRANSLATIONS[val][lang];
+            }
+        }
+    }
 
     // Update title tags
     document.title = state.currentScript === 'english' ? "Rama Koti - Digital Meditative Writing App" : "देवनाम - डिजिटल साधना लेखन ऐप";
@@ -2032,8 +2436,8 @@ function setupSpellingProgressUI() {
     const syllables = CLICKABLE_SYLLABLES[state.currentTemplate][state.currentScript] || letters;
     const dict = TRANSLATIONS[state.currentScript] || TRANSLATIONS["english"];
     
-    // Update top text guide
-    const targetTextString = letters.join(" - ");
+    // Update top text guide (localized script syllables instead of English letters)
+    const targetTextString = syllables.join(" - ");
     const instructionsText = document.getElementById('instructions-text');
     if (instructionsText) {
         instructionsText.innerHTML = dict["spelling-instruction"].replace("{letters}", targetTextString);
