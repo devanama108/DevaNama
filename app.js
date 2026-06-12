@@ -2,7 +2,7 @@
 // TO SETUP SUPABASE:
 // 1. Create a project at https://supabaseClient.com
 // 2. Paste your project's URL and API Anon Key below
-const SUPABASE_URL = "https://davefumtisqmjblulfmu.supabaseClient.co"; 
+const SUPABASE_URL = "https://davefumtisqmjblulfmu.supabase.co"; 
 const SUPABASE_ANON_KEY = "sb_publishable_TpQwPlzjj7OXRtrkrnmSig_tneootts";
 
 let supabaseClient = null;
