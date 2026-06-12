@@ -1830,10 +1830,10 @@ async function handleLoginSubmit(e) {
         
         if (error) {
             if (errorMsgEl) {
-                if (error.status === 400) {
+                if (error.message === "Invalid login credentials") {
                     errorMsgEl.textContent = dict["err-wrong-password"] || "❌ Incorrect credentials!";
                 } else {
-                    errorMsgEl.textContent = error.message;
+                    errorMsgEl.textContent = "❌ " + error.message;
                 }
                 errorMsgEl.style.display = 'block';
             }
