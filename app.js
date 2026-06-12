@@ -1,16 +1,16 @@
 // --- Supabase Cloud Database Configuration ---
 // TO SETUP SUPABASE:
-// 1. Create a project at https://supabase.com
+// 1. Create a project at https://supabaseClient.com
 // 2. Paste your project's URL and API Anon Key below
-const SUPABASE_URL = "https://davefumtisqmjblulfmu.supabase.co"; 
+const SUPABASE_URL = "https://davefumtisqmjblulfmu.supabaseClient.co"; 
 const SUPABASE_ANON_KEY = "sb_publishable_TpQwPlzjj7OXRtrkrnmSig_tneootts";
 
-let supabase = null;
+let supabaseClient = null;
 if (SUPABASE_URL && SUPABASE_ANON_KEY) {
     try {
         const lib = window.supabase || window.supabaseClient;
         if (lib && typeof lib.createClient === 'function') {
-            supabase = lib.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+            supabaseClient = lib.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
         } else {
             console.error("Supabase library not found in window object.");
         }
@@ -1423,9 +1423,9 @@ function loadProgress() {
 async function saveProgress() {
     localStorage.setItem('rama_koti_state', JSON.stringify(state));
     
-    if (supabase) {
+    if (supabaseClient) {
         try {
-            const { data: { session } } = await supabase.auth.getSession();
+            const { data: { session } } = await supabaseClient.auth.getSession();
             if (session && session.user) {
                 const progressUpdate = {
                     total_count: state.totalCount,
@@ -1440,7 +1440,7 @@ async function saveProgress() {
                     is_ambient_on: state.isAmbientOn,
                     updated_at: new Date().toISOString()
                 };
-                const { error } = await supabase
+                const { error } = await supabaseClient
                     .from('sadhana_progress')
                     .update(progressUpdate)
                     .eq('user_id', session.user.id);
@@ -1807,7 +1807,7 @@ async function handleLoginSubmit(e) {
     
     const dict = TRANSLATIONS[state.currentScript] || TRANSLATIONS["english"];
     
-    if (!supabase) {
+    if (!supabaseClient) {
         if (errorMsgEl) {
             errorMsgEl.textContent = "Please configure SUPABASE_URL and SUPABASE_ANON_KEY in app.js";
             errorMsgEl.style.display = 'block';
@@ -1823,7 +1823,7 @@ async function handleLoginSubmit(e) {
     }
     
     try {
-        const { data, error } = await supabase.auth.signInWithPassword({
+        const { data, error } = await supabaseClient.auth.signInWithPassword({
             email: emailVal,
             password: passwordVal
         });
@@ -1877,7 +1877,7 @@ async function handleSignupSubmit(e) {
         return;
     }
     
-    if (!supabase) {
+    if (!supabaseClient) {
         if (errorMsgEl) {
             errorMsgEl.textContent = "Please configure SUPABASE_URL and SUPABASE_ANON_KEY in app.js";
             errorMsgEl.style.display = 'block';
@@ -1893,7 +1893,7 @@ async function handleSignupSubmit(e) {
     }
     
     try {
-        const { data, error } = await supabase.auth.signUp({
+        const { data, error } = await supabaseClient.auth.signUp({
             email: emailVal,
             password: passwordVal,
             options: {
@@ -1936,9 +1936,9 @@ async function handleSignupSubmit(e) {
 async function handleLogout() {
     const dict = TRANSLATIONS[state.currentScript] || TRANSLATIONS["english"];
     if (confirm(dict["logout-confirm"])) {
-        if (supabase) {
+        if (supabaseClient) {
             try {
-                await supabase.auth.signOut();
+                await supabaseClient.auth.signOut();
             } catch (e) {
                 console.error("Error signing out:", e);
             }
@@ -2334,8 +2334,8 @@ function exportPrasadBook() {
 // --- DOM Event Listeners Setup ---
 
 document.addEventListener('DOMContentLoaded', () => {
-    if (supabase) {
-        supabase.auth.onAuthStateChange(async (event, session) => {
+    if (supabaseClient) {
+        supabaseClient.auth.onAuthStateChange(async (event, session) => {
             if (session && session.user) {
                 const user = session.user;
                 state.profile = {
@@ -2346,7 +2346,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 };
                 
                 // Fetch progress from database
-                const { data, error } = await supabase
+                const { data, error } = await supabaseClient
                     .from('sadhana_progress')
                     .select('*')
                     .eq('user_id', user.id)
@@ -2383,7 +2383,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         is_bell_sound_on: true,
                         is_ambient_on: false
                     };
-                    const { error: insertError } = await supabase
+                    const { error: insertError } = await supabaseClient
                         .from('sadhana_progress')
                         .insert([defaultProgress]);
                     if (insertError) {
@@ -2580,8 +2580,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const googleMock = document.getElementById('btn-google-mock');
     if (googleMock) {
         googleMock.addEventListener('click', async () => {
-            if (supabase) {
-                const { error } = await supabase.auth.signInWithOAuth({
+            if (supabaseClient) {
+                const { error } = await supabaseClient.auth.signInWithOAuth({
                     provider: 'google',
                     options: {
                         redirectTo: window.location.origin
