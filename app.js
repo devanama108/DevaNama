@@ -8,7 +8,12 @@ const SUPABASE_ANON_KEY = "sb_publishable_TpQwPlzjj7OXRtrkrnmSig_tneootts";
 let supabase = null;
 if (SUPABASE_URL && SUPABASE_ANON_KEY) {
     try {
-        supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+        const lib = window.supabase || window.supabaseClient;
+        if (lib && typeof lib.createClient === 'function') {
+            supabase = lib.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+        } else {
+            console.error("Supabase library not found in window object.");
+        }
     } catch (e) {
         console.error("Failed to initialize Supabase client:", e);
     }
