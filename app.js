@@ -1655,35 +1655,29 @@ function playTempleBell() {
     });
 }
 
-// 1b. Meditative Name Chanting (Google Neural Voice & Web Speech Fallback)
+// 1b. Meditative Name Chanting (Puter.js OpenAI Neural Voice with Web Speech Fallback)
 function speakName(text, lang) {
-    // Map script languages to Google TTS locales
-    const localeMap = {
-        english: 'en',
-        devanagari: 'hi',
-        telugu: 'te',
-        tamil: 'ta',
-        kannada: 'kn',
-        bengali: 'bn',
-        gujarati: 'gu',
-        malayalam: 'ml',
-        odia: 'hi', // Fallback to Hindi since Odia is not supported by Google TTS
-        punjabi: 'pa'
-    };
-    
-    const targetLang = localeMap[lang] || 'hi';
-    const audioUrl = `https://translate.google.com/translate_tts?ie=UTF-8&q=${encodeURIComponent(text)}&tl=${targetLang}&client=tw-ob`;
-    
-    try {
-        const audio = new Audio(audioUrl);
-        audio.defaultPlaybackRate = 0.85; // Set rate before load/play
-        audio.playbackRate = 0.85; // Calming, meditative rate
-        audio.play().catch(err => {
-            console.warn("Google TTS failed, falling back to Web Speech API:", err);
+    if (typeof puter !== 'undefined' && puter.ai && puter.ai.txt2speech) {
+        // OpenAI Voices: alloy, echo, fable, onyx, nova, shimmer.
+        // "alloy" is a very calm, balanced, professional voice suitable for meditative chanting.
+        puter.ai.txt2speech(text, {
+            provider: "openai",
+            model: "tts-1",
+            voice: "alloy"
+        }).then(audio => {
+            // Apply slow, peaceful playback speed for chanting
+            audio.defaultPlaybackRate = 0.85;
+            audio.playbackRate = 0.85;
+            audio.play().catch(err => {
+                console.warn("Puter audio play failed, falling back to Web Speech API:", err);
+                speakNameFallback(text, lang);
+            });
+        }).catch(err => {
+            console.warn("Puter TTS synthesis failed, falling back to Web Speech API:", err);
             speakNameFallback(text, lang);
         });
-    } catch (e) {
-        console.warn("Failed to create Audio object, falling back to Web Speech API:", e);
+    } else {
+        console.warn("Puter.js not initialized, falling back to Web Speech API");
         speakNameFallback(text, lang);
     }
 }
