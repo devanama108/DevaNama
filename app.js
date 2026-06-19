@@ -1655,6 +1655,51 @@ function playTempleBell() {
     });
 }
 
+// 1b. Meditative Name Chanting (Speech Synthesis engine)
+function speakName(text, lang) {
+    if (!('speechSynthesis' in window)) return;
+    
+    // Stop any ongoing speech to prevent overlapping chants
+    window.speechSynthesis.cancel();
+    
+    const utterance = new SpeechSynthesisUtterance(text);
+    
+    // Map script languages to TTS locales
+    const localeMap = {
+        english: 'en-US',
+        devanagari: 'hi-IN',
+        telugu: 'te-IN',
+        tamil: 'ta-IN',
+        kannada: 'kn-IN',
+        bengali: 'bn-IN',
+        gujarati: 'gu-IN',
+        malayalam: 'ml-IN',
+        odia: 'or-IN',
+        punjabi: 'pa-IN'
+    };
+    
+    const targetLang = localeMap[lang] || 'hi-IN';
+    utterance.lang = targetLang;
+    
+    // Configure meditative properties
+    utterance.rate = 0.82;   // Slower, calming speed
+    utterance.pitch = 0.95;  // Slightly lower, warmer tone
+    utterance.volume = 1.0;
+    
+    // Attempt to match native voice locales
+    if (window.speechSynthesis.getVoices) {
+        const voices = window.speechSynthesis.getVoices();
+        const matchingVoice = voices.find(voice => 
+            voice.lang.toLowerCase().replace('_', '-').startsWith(targetLang.split('-')[0].toLowerCase())
+        );
+        if (matchingVoice) {
+            utterance.voice = matchingVoice;
+        }
+    }
+    
+    window.speechSynthesis.speak(utterance);
+}
+
 // 2. Synthesize continuous Tanpura Drone
 function startTanpura() {
     initAudio();
@@ -1943,6 +1988,9 @@ function addWrittenName() {
     saveProgress();
     spawnParticles();
     playTempleBell();
+    if (state.isBellSoundOn) {
+        speakName(nameText, state.currentScript);
+    }
 
     // Check Milestones
     checkMilestones();
