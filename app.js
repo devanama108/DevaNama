@@ -1655,8 +1655,39 @@ function playTempleBell() {
     });
 }
 
-// 1b. Meditative Name Chanting (Speech Synthesis engine)
+// 1b. Meditative Name Chanting (Google Neural Voice & Web Speech Fallback)
 function speakName(text, lang) {
+    // Map script languages to Google TTS locales
+    const localeMap = {
+        english: 'en',
+        devanagari: 'hi',
+        telugu: 'te',
+        tamil: 'ta',
+        kannada: 'kn',
+        bengali: 'bn',
+        gujarati: 'gu',
+        malayalam: 'ml',
+        odia: 'hi', // Fallback to Hindi since Odia is not supported by Google TTS
+        punjabi: 'pa'
+    };
+    
+    const targetLang = localeMap[lang] || 'hi';
+    const audioUrl = `https://translate.google.com/translate_tts?ie=UTF-8&q=${encodeURIComponent(text)}&tl=${targetLang}&client=tw-ob`;
+    
+    try {
+        const audio = new Audio(audioUrl);
+        audio.playbackRate = 0.85; // Calming, meditative rate
+        audio.play().catch(err => {
+            console.warn("Google TTS failed, falling back to Web Speech API:", err);
+            speakNameFallback(text, lang);
+        });
+    } catch (e) {
+        console.warn("Failed to create Audio object, falling back to Web Speech API:", e);
+        speakNameFallback(text, lang);
+    }
+}
+
+function speakNameFallback(text, lang) {
     if (!('speechSynthesis' in window)) return;
     
     // Stop any ongoing speech to prevent overlapping chants
@@ -1674,7 +1705,7 @@ function speakName(text, lang) {
         bengali: 'bn-IN',
         gujarati: 'gu-IN',
         malayalam: 'ml-IN',
-        odia: 'or-IN',
+        odia: 'hi-IN',
         punjabi: 'pa-IN'
     };
     
