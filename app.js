@@ -1676,6 +1676,7 @@ function speakName(text, lang) {
     
     try {
         const audio = new Audio(audioUrl);
+        audio.defaultPlaybackRate = 0.85; // Set rate before load/play
         audio.playbackRate = 0.85; // Calming, meditative rate
         audio.play().catch(err => {
             console.warn("Google TTS failed, falling back to Web Speech API:", err);
@@ -1693,9 +1694,6 @@ function speakNameFallback(text, lang) {
     // Stop any ongoing speech to prevent overlapping chants
     window.speechSynthesis.cancel();
     
-    const utterance = new SpeechSynthesisUtterance(text);
-    
-    // Map script languages to TTS locales
     const localeMap = {
         english: 'en-US',
         devanagari: 'hi-IN',
@@ -1710,23 +1708,35 @@ function speakNameFallback(text, lang) {
     };
     
     const targetLang = localeMap[lang] || 'hi-IN';
-    utterance.lang = targetLang;
+    let voiceToUse = null;
+    
+    if (window.speechSynthesis.getVoices) {
+        const voices = window.speechSynthesis.getVoices();
+        voiceToUse = voices.find(voice => 
+            voice.lang.toLowerCase().replace('_', '-').startsWith(targetLang.split('-')[0].toLowerCase())
+        );
+    }
+    
+    // If no matching native voice is found for the Indian language,
+    // use the English transliteration of the mantra so the default system voice can speak it instead of staying silent.
+    let textToSpeak = text;
+    let speakLang = targetLang;
+    
+    if (!voiceToUse && lang !== 'english') {
+        textToSpeak = SCRIPT_DICTIONARY[state.currentTemplate]["english"] || "Rama";
+        speakLang = 'en-US';
+    }
+    
+    const utterance = new SpeechSynthesisUtterance(textToSpeak);
+    utterance.lang = speakLang;
+    if (voiceToUse) {
+        utterance.voice = voiceToUse;
+    }
     
     // Configure meditative properties
     utterance.rate = 0.82;   // Slower, calming speed
     utterance.pitch = 0.95;  // Slightly lower, warmer tone
     utterance.volume = 1.0;
-    
-    // Attempt to match native voice locales
-    if (window.speechSynthesis.getVoices) {
-        const voices = window.speechSynthesis.getVoices();
-        const matchingVoice = voices.find(voice => 
-            voice.lang.toLowerCase().replace('_', '-').startsWith(targetLang.split('-')[0].toLowerCase())
-        );
-        if (matchingVoice) {
-            utterance.voice = matchingVoice;
-        }
-    }
     
     window.speechSynthesis.speak(utterance);
 }
